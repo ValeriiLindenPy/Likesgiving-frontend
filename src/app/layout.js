@@ -1,13 +1,11 @@
 "use client";
 
-
 import './globals.css'
 import { Inter } from 'next/font/google'
-import Navbar from '../components/Navbar'
+import {StuctureLayout} from '../components/StuctureLayout'
 const inter = Inter({ subsets: ['latin'] })
 import {ReduxProvider} from '../redux/ReduxProvider'
-import { useSelector } from 'react-redux'
-import { redirect } from 'next/navigation';
+
 
 export const metadata = {
   title: 'MyApp',
@@ -17,16 +15,16 @@ export const metadata = {
 
 
 export default function RootLayout({ children }) {
-  const isAuth = useSelector((state) => state.auth.isAuth); 
-  if (!isAuth) 
-    return redirect('/login')
+  
   return (
     <html lang="en">
 
       <body className={inter.className}>
       
       <ReduxProvider>
-        {children}
+        <StuctureLayout>
+          {children}
+        </StuctureLayout>
       </ReduxProvider>
       
       </body>

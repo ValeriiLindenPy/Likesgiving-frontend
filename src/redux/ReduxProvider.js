@@ -5,5 +5,5 @@ import {store} from './store'
 import Navbar from '@/components/Navbar'
 
 export function ReduxProvider({children}) {
-  return <Provider store={store}><Navbar></Navbar>{children}</Provider>
+  return <Provider store={store}>{children}</Provider>
 }
