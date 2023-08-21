@@ -1,0 +1,9 @@
+"use client";
+
+import { Provider } from 'react-redux'
+import {store} from './store'
+import Navbar from '@/components/Navbar'
+
+export function ReduxProvider({children}) {
+  return <Provider store={store}><Navbar></Navbar>{children}</Provider>
+}
