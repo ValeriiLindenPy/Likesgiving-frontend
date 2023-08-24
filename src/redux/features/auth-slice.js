@@ -5,6 +5,8 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   isAuth: false,
+  token: "",
+  email: "",
   username: "",
 }
 
@@ -16,7 +18,7 @@ export const auth = createSlice({
   		return initialState;
   	},
   	logIn: (state, action) => {
-  		state.username = action.payload;
+  		state.token = action.payload;
   		state.isAuth = true;
   	},
     
