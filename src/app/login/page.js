@@ -1,18 +1,16 @@
 "use client";
 import styles from './login.module.css'
-import { logIn} from '@/redux/features/auth-slice'
-import { useSelector, useDispatch } from 'react-redux'
-import { redirect } from 'next/navigation';
 import Image from 'next/image'
 import { useFormik } from 'formik';
 import { basicSchema } from '@/schemas';
-import { handleLogin } from '../api/auth/apilog';
 
 
 
-export default function LogIn() {
-  const isAuth = useSelector((state) => state.auth.isAuth);
-  const dispatch = useDispatch();
+
+export default function  LogIn() {
+  const token = localStorage.getItem('token');
+  
+
 
 
   const formik = useFormik({
@@ -23,13 +21,7 @@ export default function LogIn() {
     validationSchema: basicSchema,
     onSubmit: async (values, actions) => {
       await handleLogin(values.email, values.password);
-      const token = await localStorage.getItem('token');
-      if (token) {
-        dispatch(logIn(token));
-        alert("Success");
-      }else {
-        alert('Bad!');
-      }
+ 
 
       actions.resetForm();
     },
@@ -38,17 +30,14 @@ export default function LogIn() {
   console.log(formik.errors)
 
 
-  if (isAuth)
-  	return redirect('/');
+
 
   
 
   return (
     <main className = {styles.main}>
     <div className = {styles.form}>
-    <Image src='/logo.png' width={122} height={100} alt='Logo' />
-
-    <h1>Log In</h1>
+    <Image src='/logo.png' width={200} height={130} alt='Logo' />
       <form onSubmit={formik.handleSubmit} autoComplete='off'>
       <input
          id="email"
