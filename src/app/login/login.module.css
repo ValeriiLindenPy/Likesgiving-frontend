@@ -1,5 +1,3 @@
-
-
 .main {
 	min-height: 100vh;
 	display: flex;
@@ -8,7 +6,7 @@
 }
 
 .form {
-	padding-top: 5em;
+
 	text-align: center;
 	min-width: 300px;
 	max-width: 600px;
@@ -16,6 +14,12 @@
 	overflow: hidden;
 	justify-content: center;
 	align-items: center;
+}
+
+
+.form form {
+	padding-top: 2em;
+
 }
 
 .form input {
@@ -69,6 +73,7 @@
 .form button:disabled {
 	background: #bebdbd;
 	color: #777272;
-	border-color: #777272;;
+	border-color: #777272;
+	;
 
 }

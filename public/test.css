@@ -1,0 +1,107 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.body {
+    overflow: hidden;
+    height: 100vh;
+}
+
+.main {
+    display: flex;
+    height: 100%;
+}
+
+
+.input-error {
+    border: 1px solid red;
+}
+
+
+
+main {
+    align-items: center;
+    display: inherit;
+    overflow-y: auto;
+    flex: 1 0 96%;
+    flex-direction: column;
+}
+
+.fakeimg {
+    background-color: #aaa;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Add a card effect for articles */
+.card {
+
+    border: 1px solid gray;
+    max-width: 300px;
+    background-color: white;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+
+.nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    background-color: #131313;
+    height: 100vh;
+    border-radius: 5px;
+}
+
+.nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav li {
+    padding: 8px;
+    margin: 0 3px;
+}
+
+.nav li {
+    box-sizing: border-box;
+    border: 2px solid #131313;
+    margin-top: auto;
+    /* Push the centered items to the top */
+}
+
+.nav li:last-child {
+    align-self: flex-end;
+    /* Align the last item to the bottom */
+}
+
+
+.nav li:last-child {
+    margin-top: auto;
+    /* Push the last item to the bottom */
+}
+
+
+
+.nav li a {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.nav li:hover {
+    border: 2px solid white;
+    border-radius: 3px;
+}
+
+
+.user {
+    position: absolute;
+    top: 0;
+    right: 10px;
+}

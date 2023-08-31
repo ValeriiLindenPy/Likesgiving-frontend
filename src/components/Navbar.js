@@ -1,40 +1,46 @@
+"use client";
+
+import { useSession, signOut } from 'next-auth/react';
 import Link from 'next/link'
+import { usePathname } from 'next/navigation';
 import { FaHome, FaUserAlt } from 'react-icons/fa';
 import { IoHeartDislikeOutline, IoHeartOutline } from 'react-icons/io5';
-import {  RiLogoutCircleLine } from 'react-icons/ri';
-
+import { RiLogoutCircleLine } from 'react-icons/ri';
 
 
 export default function NavBar() {
+  const { data: session } = useSession();
+  const pathname = usePathname()
 
 
+  if (!session) {
+    return <></>
+  }
 
-  const onClickLogIn = () => {
+  console.log(pathname)
 
-  };
-
-
-
-
-    
   return (
-      <ul className='nav'>
-      <li>
-        <Link href="/"> <FaHome size={25} color='black' /></Link>
-      </li>
-      <li>
-        <Link href="/like"><IoHeartOutline size={25} /></Link>
-      </li>
-      <li>
-        <Link href="/dislike"><IoHeartDislikeOutline size={25} /></Link>
-      </li>
-      <li>
-      {/* {token && <a onClick={onClickLogIn} > <RiLogoutCircleLine size={25} /> </a>} */}
-      
-      </li>
-      <li className='user'>
-        {/* {token && <p><FaUserAlt size={25} /> {username}</p>} */}
-      </li>
-    </ul>
+    <nav className='nav'>
+      <ul >
+        <li className='user'>
+          {session && <Link href="#"><FaUserAlt size={25} /></Link>}
+
+        </li>
+        <li className='first'>
+          <Link href="/"> <FaHome size={25} className={pathname == '/' ? 'active' : ''} /></Link>
+        </li>
+        <li className='second'>
+          <Link href="/like"><IoHeartOutline className={pathname == '/like' ? 'active' : ''} size={25} /></Link>
+        </li>
+        <li className='third'>
+          <Link href="/dislike"><IoHeartDislikeOutline className={pathname == '/dislike' ? 'active' : ''} size={25} /></Link>
+        </li>
+        <li className='logout-nav-lg'>
+          {session && <a onClick={signOut} > <RiLogoutCircleLine size={25} /> </a>}
+
+        </li>
+
+      </ul>
+    </nav>
   )
 }

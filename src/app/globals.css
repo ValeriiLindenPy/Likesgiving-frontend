@@ -1,7 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Montserrat:wght@400;700&display=swap');
+
+
+
+
 
 * {
 	padding: 0;
 	margin: 0;
+}
+
+.logo-font {
+	font-family: "Caveat";
+	font-weight: 700;
+	font-size: 4em;
 }
 
 
@@ -9,17 +20,44 @@
 	border: 1px solid red;
 }
 
-.nav {
+
+body {
 	display: flex;
-	width: 100%;
-	background-color: #45b7df;
+	height: 100vh;
 }
 
-.nav li {
-	
+.nav {
+	display: flex;
+	position: fixed;
+	background-color: #131313;
+	height: 100vh;
+	border-radius: 5px;
+	padding: 0.5em;
+
+}
+
+.nav ul {
+	display: flex;
+	justify-content: space-between;
+	flex-direction: column;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	justify-content: center;
+	align-items: center;
+}
+
+.nav ul li:last-child {
+	margin-top: 4em;
+}
+
+.nav ul li {
+	display: flex;
+	margin: 20px 0;
+	box-sizing: border-box;
+	border: 2px solid #131313;
 	padding: 8px;
-	margin: 0 3px;
-	list-style-type: none;
+	/* Push the centered items to the top */
 }
 
 .nav li a {
@@ -29,11 +67,108 @@
 }
 
 .nav li:hover {
-	background-color: #b4d7e3;
+	border: 2px solid white;
+	border-radius: 3px;
 }
 
-.user {
-	position: absolute;
+
+
+/* Center the remaining li elements */
+
+.loader-container {
+	position: fixed;
 	top: 0;
-	right: 10px;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	text-align: center;
+	z-index: -10;
+
+}
+
+.loader-container:before {
+	content: "";
+	height: 100%;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.loader {
+	position: relative;
+}
+
+main {
+	width: 100%;
+	display: flex;
+	flex: 1 0 10%;
+	justify-content: center;
+}
+
+
+@media (max-width: 820px) {
+	.nav {
+		position: fixed;
+		height: auto;
+		bottom: 0;
+		width: 100%;
+		border-radius: 20px 20px 0 0;
+		padding: 0;
+	}
+
+	.nav ul {
+		flex-direction: row;
+		justify-content: space-between;
+		width: 100%;
+		padding: 0 3em;
+
+	}
+
+	.logout-nav-lg,
+	.user {
+		display: none !important;
+		visibility: collapse;
+	}
+
+	.nav li a {
+		color: #4f4f4f;
+	}
+
+	.nav li a:hover {
+		color: #b7b7b7;
+	}
+
+	.nav ul li {
+		border: none;
+	}
+
+	.nav ul li:hover {
+		border: none;
+	}
+
+	.nav ul li a svg {
+		width: 2.1em;
+		height: 2.1em;
+	}
+
+	.active {
+
+		color: #b7b7b7;
+
+
+
+	}
+
+	.second {
+		order: 1;
+	}
+
+	.first {
+		order: 2;
+	}
+
+	.third {
+		order: 3;
+	}
+
+
 }

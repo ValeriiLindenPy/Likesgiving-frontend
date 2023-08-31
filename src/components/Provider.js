@@ -1,11 +1,18 @@
-import {SessionProvider} from 'next-auth/react'
+"use client";
 
-const Provider = ({children}) => {
+
+import { SessionProvider } from 'next-auth/react'
+import { CheckWrapper } from './CheckWrapper';
+
+const Provider = ({ children }) => {
+
   return (
     <SessionProvider>
+      <CheckWrapper>
         {children}
+      </CheckWrapper>
     </SessionProvider>
-    
+
   )
 }
 
