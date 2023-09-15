@@ -1,0 +1,46 @@
+.button {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    background-color: #000000;
+    border: none;
+    color: white;
+    display: block;
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    border-radius: 50%;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    font-size: 2em;
+}
+
+.button:hover {
+    box-shadow: none;
+}
+
+.buttonBlack {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    background-color: #ffffff;
+    border: none;
+    color: rgb(0, 0, 0);
+    display: block;
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    border-radius: 50%;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: rgba(222, 219, 219, 0.35) 0px 5px 15px;
+    font-size: 2em;
+
+}
+
+.buttonBlack:hover {
+    box-shadow: none;
+}

@@ -17,10 +17,11 @@ export default function NavBar() {
     return <></>
   }
 
-  console.log(pathname)
+
+
 
   return (
-    <nav className='nav'>
+    <nav className={pathname === '/dislike' ? 'dark-nav' : 'nav'} >
       <ul >
         <li className='user'>
           {session && <Link href="#"><FaUserAlt size={25} /></Link>}

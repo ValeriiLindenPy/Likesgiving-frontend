@@ -2,9 +2,10 @@
 import styles from './login.module.css'
 import Image from 'next/image'
 import { useFormik } from 'formik';
-import { basicSchema } from '@/schemas';
+import { signInSchema } from '@/schemas';
 import { signIn, useSession } from 'next-auth/react';
-import { redirect } from 'next/navigation'
+import Link from 'next/link';
+
 
 
 
@@ -16,7 +17,7 @@ export default function LogIn() {
       email: '',
       password: '',
     },
-    validationSchema: basicSchema,
+    validationSchema: signInSchema,
     onSubmit: async (values, actions) => {
       try {
         const response = await signIn('credentials', {
@@ -45,7 +46,7 @@ export default function LogIn() {
   return (
     <main className={styles.main}>
       <div className={styles.form}>
-        <Image src='/logo.png' width={167} height={138} />
+        <Image src='/logo.png' width={137} height={108} alt='logo' priority />
         <h1 className='logo-font'>Likesgiving</h1>
         <form onSubmit={formik.handleSubmit} autoComplete='off'>
           <input
@@ -70,8 +71,26 @@ export default function LogIn() {
             className={formik.errors.password && formik.touched.password ? styles.error : ""}
           />
           {formik.errors.password && formik.touched.password && <p className={styles.errorlabel}>{formik.errors.password}</p>}
+          <div style={{
+            textAlign: 'right',
+          }}>
+            <Link className={styles.customLink} href='/forgot-password'>Forgot password?</Link>
+          </div>
           <button disabled={formik.isSubmitting} type='submit'>Log In</button>
         </form>
+        <div className={styles.signUp} style={{
+          display: 'flex'
+        }}>
+          <p style={{
+
+            fontSize: '20px'
+          }}>Don't have an account</p> <Link href='/register' style={{
+            color: 'black',
+            paddingLeft: '3px',
+            fontSize: '20px',
+            fontWeight: '700',
+          }}>Sign-Up</Link>
+        </div>
       </div>
     </main>
   )
