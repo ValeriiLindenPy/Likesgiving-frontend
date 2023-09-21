@@ -24,7 +24,7 @@ export default function NavBar() {
     <nav className={pathname === '/dislike' ? 'dark-nav' : 'nav'} >
       <ul >
         <li className='user'>
-          {session && <Link href="#"><FaUserAlt size={25} /></Link>}
+          {session && <Link href="/profile"><FaUserAlt size={25} /></Link>}
 
         </li>
         <li className='first'>

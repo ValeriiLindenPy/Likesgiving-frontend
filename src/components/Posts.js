@@ -9,28 +9,27 @@ import { useSession } from 'next-auth/react';
 import { makeLike } from '@/lib/makeLike';
 import { BiComment } from "react-icons/bi";
 import { formatNumber } from '@/lib/numberFormate';
+import Link from 'next/link';
 
 
 
 
 export const Post = ({ post, type }) => {
+    console.log(`id : ${post.id}, text: ${post.text}, author: ${post.author.profile_picture} , ${post.author.user_name}, emotion: ${post.emotion}, date: ${post.date_created} ,picture : ${post.picture}`)
 
     const { data: session } = useSession();
     const [liked, setLiked] = useState(false);
     const [likeNumber, setLikeNumber] = useState(post.likes.length)
     const likesStatus = post.likes.includes(Number(session?.sub))
     const [isLiked, setIsLiked] = useState(likesStatus)
+    const commentURL = `/${type}/comments/${post.id}`
 
 
 
     const handleLikeToggle = async () => {
-
-        console.log(`Before : liked ${liked}, likeNumber ${likeNumber}, isLiked ${isLiked} `)
         setLiked((prevLiked) => !prevLiked);
         setLikeNumber((prevLikeNumber) => (liked ? prevLikeNumber - 1 : prevLikeNumber + 1));
         await makeLike(post.id, session?.token)
-        console.log(`After : liked ${liked}, likeNumber ${likeNumber}, isLiked ${isLiked} `)
-
     };
 
 
@@ -74,13 +73,13 @@ export const Post = ({ post, type }) => {
 
 
                             <div className={styles.postImg}>
-                                <Image src={post.picture} width={600} height={400}
+                                {post.picture !== null && <Image src={post.picture} width={600} height={400}
                                     style={{
                                         width: '100%',
                                         height: 'auto',
                                         maxWidth: '400px',
                                         borderRadius: '15px',
-                                    }} alt='post-img' priority />
+                                    }} alt='post-img' priority />}
                             </div>
 
                             <div className={type === 'like' ? styles.postItems : styles.postItemsDislike}>
@@ -118,9 +117,14 @@ export const Post = ({ post, type }) => {
                                         <p style={{ paddingLeft: '2px' }}>{likeNumber}</p>
                                     </div>}
                                     <div className={styles.postComment}>
-                                        <BiComment
-                                            size={25}
-                                        />
+                                        <Link style={{
+                                            textDecoration: 'none',
+                                            color: 'black',
+                                            display: 'flex',
+                                        }} href={commentURL}><BiComment
+                                                size={25}
+                                            />
+                                        </Link>
                                         <p style={{ paddingLeft: '2px' }}>{formatNumber(2000)}</p>
                                     </div>
                                 </div>

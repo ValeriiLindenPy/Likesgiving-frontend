@@ -5,6 +5,8 @@ import styles from './AddPost.module.css'
 import api from "@/app/api/auth/baseaxios";
 import { addPostSchema } from '@/schemas';
 import { useSession } from "next-auth/react";
+import { redirect } from "next/navigation";
+
 
 
 
@@ -35,12 +37,18 @@ export const AddPostModal = ({ onClick, type }) => {
                     picture: values.picture,
                 }, config);
 
+                console.log(response);
+
+                if (response.status === 201) {
+                    return redirect('/' + type);
+                }
+
                 if (response.error) {
                     // Handle error if authentication fails
                     console.log(response.error)
                 }
 
-                onClick();
+
 
                 actions.resetForm();
             } catch (error) {
@@ -103,9 +111,6 @@ export const AddPostModal = ({ onClick, type }) => {
                                 onChange={(e) => formik.setFieldValue('picture', e.currentTarget.files[0])}
                                 onBlur={() => formik.setFieldTouched('picture')}
                                 placeholder='Add photo'
-                                onRemove={() => {
-                                    formik.setFieldValue('picture', null)
-                                }}
                                 className={formik.errors.picture && formik.touched.picture ? styles.uploadFieldError : styles.uploadField}
                             />
                             {formik.errors.picture && formik.touched.picture && <p className={styles.errorlabel}>{formik.errors.picture}</p>}

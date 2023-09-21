@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 import { AddPostModal } from "@/components/Modals/AddPost";
 
 
-export default async function Like() {
+export default function Like() {
   const [modal, setModal] = useState(false);
   const { data: session, status } = useSession();
   const [posts, setPosts] = useState([]);
@@ -17,10 +17,9 @@ export default async function Like() {
 
   useEffect(() => {
     if (session) {
-      // Fetch posts when the session is available
-      getPosts("like", session.token)
+      getPosts("like", session?.token)
         .then((posts) => {
-          setPosts(posts);
+          setPosts(posts.results);
         })
         .catch((error) => {
           console.error("Error fetching posts:", error);
@@ -28,10 +27,10 @@ export default async function Like() {
     }
   }, [session]);
 
-  const addPost = (e) => {
-    e.preventDefault();
+  const addPost = () => {
     setModal(!modal);
   };
+
 
 
   return (
@@ -42,7 +41,7 @@ export default async function Like() {
       </div>
       <div className="post-container">
 
-        {posts.map((post) => (
+        {posts?.map((post) => (
           <Post key={post.id} post={post} type='like' />
         ))}
       </div>

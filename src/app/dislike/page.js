@@ -17,7 +17,7 @@ export default function Dislike() {
       // Fetch posts when the session is available
       getPosts("dislike", session.token)
         .then((posts) => {
-          setPosts(posts);
+          setPosts(posts.results);
         })
         .catch((error) => {
           console.error("Error fetching posts:", error);

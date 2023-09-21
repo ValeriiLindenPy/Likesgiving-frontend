@@ -10,7 +10,8 @@ const SIGN_IN_HANDLERS = {
 };
 const SIGN_IN_PROVIDERS = Object.keys(SIGN_IN_HANDLERS);
 
-const handler = NextAuth({
+
+export const authOptions = {
 
   providers: [
     CredentialsProvider({
@@ -88,6 +89,10 @@ const handler = NextAuth({
     maxAge: BACKEND_REFRESH_TOKEN_LIFETIME,
   },
 
-})
+}
+
+
+
+const handler = NextAuth(authOptions);
 
 export { handler as GET, handler as POST }

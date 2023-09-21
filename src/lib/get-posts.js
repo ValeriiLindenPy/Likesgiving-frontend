@@ -5,10 +5,12 @@ import api from "@/app/api/auth/baseaxios";
 
 export const getPosts = async (postType, token) => {
     try {
-        const response = await api.get(`posts/get_posts/${postType}/`, {
+        const response = await api.get(`posts/v1/post/`, {
             headers: {
                 Authorization: `Token ${token}`,
             },
+            params: { post_type: postType },
+
         });
         if (response.status === 200) {
             return response.data;
