@@ -1,0 +1,39 @@
+.container {
+    width: 100%;
+    margin-top: 6px;
+
+}
+
+.CommentBody {
+    border: 2px solid rgb(239, 243, 244);
+    border-radius: 13px;
+    margin: 1em;
+    padding: 10px;
+    display: flex;
+}
+
+.authorImg {
+    border-bottom-left-radius: 9999px;
+    border-bottom-right-radius: 9999px;
+    border-top-left-radius: 9999px;
+    border-top-right-radius: 9999px;
+}
+
+.CommentContent {
+    padding-left: 10px;
+}
+
+.authorName {
+    font-weight: 700;
+    padding-top: 10px;
+}
+
+.text {
+    color: rgb(24, 26, 28);
+    padding-top: 10px;
+}
+
+.date {
+    color: rgb(83, 100, 113);
+    font-size: 15px;
+}

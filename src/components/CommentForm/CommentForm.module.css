@@ -1,0 +1,70 @@
+.container {
+    width: 100%;
+    margin-top: 6px;
+
+}
+
+.CommentBody {
+    border: 2px solid rgb(239, 243, 244);
+    border-radius: 13px;
+    margin: 1em;
+    display: flex;
+}
+
+
+.CommentContent {
+    padding-left: 10px;
+    width: 100%;
+}
+
+.button {
+    width: 20%;
+    height: 40px;
+    margin: 10px auto;
+    justify-content: center;
+    display: block;
+    color: #000;
+    background: #fff;
+    font-size: 1em;
+    font-weight: bold;
+    outline: none;
+    border: 1px solid black;
+    border-radius: 5px;
+    transition: .2s ease-in;
+    cursor: pointer;
+}
+
+
+.button:hover {
+    background: #000000;
+    color: #ffffff;
+}
+
+.form {
+    padding: 30px;
+}
+
+.label,
+.area {
+    padding: 1px;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+}
+
+
+
+.area {
+    margin-top: 10px;
+    width: 100%;
+    max-width: 100%;
+    line-height: 1.5;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px #999;
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+.area::placeholder {
+    padding: 10px;
+}

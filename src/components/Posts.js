@@ -15,13 +15,14 @@ import Link from 'next/link';
 
 
 export const Post = ({ post, type }) => {
-    console.log(`id : ${post.id}, text: ${post.text}, author: ${post.author.profile_picture} , ${post.author.user_name}, emotion: ${post.emotion}, date: ${post.date_created} ,picture : ${post.picture}`)
+
 
     const { data: session } = useSession();
-    const [liked, setLiked] = useState(false);
     const [likeNumber, setLikeNumber] = useState(post.likes.length)
+    const [CommentsNumber, setCommentsNumber] = useState(post.post_comments.length)
     const likesStatus = post.likes.includes(Number(session?.sub))
     const [isLiked, setIsLiked] = useState(likesStatus)
+    const [liked, setLiked] = useState(isLiked);
     const commentURL = `/${type}/comments/${post.id}`
 
 
@@ -125,7 +126,7 @@ export const Post = ({ post, type }) => {
                                                 size={25}
                                             />
                                         </Link>
-                                        <p style={{ paddingLeft: '2px' }}>{formatNumber(2000)}</p>
+                                        <p style={{ paddingLeft: '2px' }}>{formatNumber(CommentsNumber)}</p>
                                     </div>
                                 </div>
 

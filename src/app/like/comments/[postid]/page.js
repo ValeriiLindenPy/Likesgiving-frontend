@@ -1,7 +1,8 @@
 import { authOptions } from "@/app/api/auth/[...nextauth]/route"
 import { getServerSession } from "next-auth"
-import Image from "next/image";
-
+import { CommentComponent } from "@/components/Comment/Comment";
+import { Post } from '@/components/Posts'
+import { CommentFormComponent } from "@/components/CommentForm/CommentForm";
 
 
 async function getData(id, token) {
@@ -27,26 +28,32 @@ async function getData(id, token) {
 
 export default async function Comment({ params }) {
   const session = await getServerSession(authOptions)
-  console.log('Params: ', params.postid)
   const data = await getData(params.postid, session?.token)
 
-  console.log(data);
+
 
 
   return (
     <>
       <main>
+
         <div style={{
           display: 'flex',
           flexDirection: 'column',
-          justifyContent: 'center',
-          width: '100%'
+          width: '29%'
         }}>
+          <Post type='like' post={data} />
 
-          <h1>{data.author.user_name}</h1>
+          <CommentFormComponent type="like" token={session?.token} post={params.postid} />
 
+          {data.post_comments?.map((comment) => (
+            <CommentComponent key={comment.id} comment={comment} type="like" />
+          ))}
 
         </div>
+
+
+
       </main>
     </>
 
