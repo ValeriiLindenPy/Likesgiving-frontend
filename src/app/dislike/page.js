@@ -58,7 +58,6 @@ export default function Dislike() {
         <InfiniteScroll
           next={fetchNextPage}
           hasMore={hasNextPage || false}
-          loader={<Loader width={98} height={56} />}
           dataLength={
             data?.pages.count || 0
           }
@@ -72,6 +71,13 @@ export default function Dislike() {
 
           ))}
         </InfiniteScroll>
+        {isLoading || isFetchingNextPage && <div style={{
+          display: 'flex',
+          justifyContent: 'center'
+        }}>
+          <Loader width={98} height={56} sm={true} />
+
+        </div>}
       </div>
       <AddPostBtn onClick={addPost} type="dislike" />
       {modal && <AddPostModal onClick={addPost} type='dislike' />}

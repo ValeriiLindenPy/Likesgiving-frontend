@@ -28,8 +28,6 @@ export default function Like() {
     },
     {
       getNextPageParam: (lastPage, allPages) => {
-        console.log('lastPage: ', lastPage);
-        console.log('allPages: ', allPages);
 
         // Check if there is a next page available
         if (lastPage?.next) {
@@ -41,12 +39,6 @@ export default function Like() {
       },
     }
   );
-
-
-  console.log('Data: ', data?.pages[0]);
-  console.log('isLoading : ', isLoading);
-  console.log('hasNextPage : ', hasNextPage);
-
 
 
 
@@ -67,7 +59,6 @@ export default function Like() {
         <InfiniteScroll
           next={fetchNextPage}
           hasMore={hasNextPage || false}
-          loader={<Loader width={98} height={56} />}
           dataLength={
             data?.pages.count || 0
           }
@@ -81,7 +72,16 @@ export default function Like() {
 
           ))}
         </InfiniteScroll>
+        {isLoading || isFetchingNextPage && <div style={{
+          display: 'flex',
+          justifyContent: 'center'
+        }}>
+          <Loader width={98} height={56} sm={true} />
+
+        </div>}
+
       </div>
+
       <AddPostBtn onClick={addPost} type='like' />
 
       {modal && <AddPostModal onClick={addPost} type='like' />}

@@ -25,7 +25,7 @@ export const CommentComponent = ({ comment, type }) => {
                             <p><Date dateString={comment.date_created} /></p>
                         </div>
 
-                        <div className={styles.text}>
+                        <div className={type === 'dislike' ? styles.textblack : styles.text}>
                             <p>{comment.text}</p>
                         </div>
 

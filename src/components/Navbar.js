@@ -11,6 +11,7 @@ import { RiLogoutCircleLine } from 'react-icons/ri';
 export default function NavBar() {
   const { data: session } = useSession();
   const pathname = usePathname()
+  const isDislike = pathname.includes("dislike")
 
 
   if (!session) {
@@ -21,7 +22,7 @@ export default function NavBar() {
 
 
   return (
-    <nav className={pathname === '/dislike' ? 'dark-nav' : 'nav'} >
+    <nav className={isDislike ? 'dark-nav' : 'nav'} >
       <ul >
         <li className='user'>
           {session && <Link href="/profile"><FaUserAlt size={25} /></Link>}

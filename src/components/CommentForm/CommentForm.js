@@ -74,7 +74,7 @@ export const CommentFormComponent = ({ type, token, post }) => {
                                 />
                             </div>
 
-                            <button className={styles.button} type='button' onClick={formik.handleSubmit}>SEND</button>
+                            <button className={type === 'dislike' ? styles.buttonBlack : styles.button} type='button' onClick={formik.handleSubmit}>SEND</button>
 
                         </form>
 
