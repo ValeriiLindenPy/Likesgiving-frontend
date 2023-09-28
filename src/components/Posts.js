@@ -123,7 +123,7 @@ export const Post = ({ post, type }) => {
                                             color: 'black',
                                             display: 'flex',
                                         }} href={commentURL}><BiComment
-                                                size={25}
+                                                size={25} color={type === 'dislike' ? 'white' : 'black'}
                                             />
                                         </Link>
                                         <p style={{ paddingLeft: '2px' }}>{formatNumber(CommentsNumber)}</p>

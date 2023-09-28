@@ -1,16 +1,11 @@
-
-import Image from "next/image";
-
-import loader from '../assets/loader.gif'
+import Loader from "@/components/Loader";
 
 export default function Loading() {
     // You can add any UI inside Loading, including a Skeleton.
     return (
 
         <>
-            <div className="loader-container">
-                <Image className="loader" src={loader} width={167} height={138} alt="loading" />
-            </div>
+            <Loader width={167} height={138} />
         </>
 
     );

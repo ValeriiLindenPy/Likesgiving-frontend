@@ -1,29 +1,43 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState, Fragment } from "react";
 import { getPosts } from "@/lib/get-posts";
 import { useSession } from "next-auth/react";
 import { Post } from "@/components/Posts";
 import { IoHeartDislikeOutline } from "react-icons/io5";
 import { AddPostBtn } from "@/components/AddPostButton/PostButton";
 import { AddPostModal } from "@/components/Modals/AddPost";
+import Loader from "@/components/Loader";
+import { useInfiniteQuery } from "@tanstack/react-query";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 export default function Dislike() {
   const [modal, setModal] = useState(false);
   const { data: session, status } = useSession();
-  const [posts, setPosts] = useState([]);
 
-  useEffect(() => {
-    if (session) {
-      // Fetch posts when the session is available
-      getPosts("dislike", session.token)
-        .then((posts) => {
-          setPosts(posts.results);
-        })
-        .catch((error) => {
-          console.error("Error fetching posts:", error);
-        });
+  const { data, isLoading, fetchNextPage, isFetchingNextPage, hasNextPage } = useInfiniteQuery(
+    ['query'],
+    async ({ pageParam = 1 }) => {
+      const response = await getPosts('dislike', session?.token, pageParam);
+      return response;
+    },
+    {
+      getNextPageParam: (lastPage, allPages) => {
+        console.log('lastPage: ', lastPage);
+        console.log('allPages: ', allPages);
+
+        // Check if there is a next page available
+        if (lastPage?.next) {
+          return allPages.length + 1;
+        }
+
+        // If there is no next page, return undefined
+        return undefined;
+      },
     }
-  }, [session]);
+  );
+
+
+
 
   const addPost = () => {
     setModal(!modal);
@@ -41,9 +55,23 @@ export default function Dislike() {
         <IoHeartDislikeOutline size={35} color="white" />
       </div>
       <div className="post-container">
-        {posts.map((post) => (
-          <Post key={post.id} post={post} type="dislike" />
-        ))}
+        <InfiniteScroll
+          next={fetchNextPage}
+          hasMore={hasNextPage || false}
+          loader={<Loader width={98} height={56} />}
+          dataLength={
+            data?.pages.count || 0
+          }
+        >
+          {data?.pages.map((posts, id) => (
+            <Fragment key={id}>
+              {posts?.results.map((post) => (
+                <Post key={post.id} post={post} type='dislike' />
+              ))}
+            </Fragment>
+
+          ))}
+        </InfiniteScroll>
       </div>
       <AddPostBtn onClick={addPost} type="dislike" />
       {modal && <AddPostModal onClick={addPost} type='dislike' />}
