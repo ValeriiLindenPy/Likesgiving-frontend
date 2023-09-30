@@ -18,12 +18,12 @@ export const Post = ({ post, type }) => {
 
 
     const { data: session } = useSession();
-    const [likeNumber, setLikeNumber] = useState(post.likes.length)
-    const [CommentsNumber, setCommentsNumber] = useState(post.post_comments.length)
-    const likesStatus = post.likes.includes(Number(session?.sub))
+    const [likeNumber, setLikeNumber] = useState(post?.likes?.length)
+    const [CommentsNumber, setCommentsNumber] = useState(post?.post_comments?.length)
+    const likesStatus = post?.likes?.includes(Number(session?.sub))
     const [isLiked, setIsLiked] = useState(likesStatus)
     const [liked, setLiked] = useState(isLiked);
-    const commentURL = `/${type}/comments/${post.id}`
+    const commentURL = `/${type}/comments/${post?.id}`
 
 
 

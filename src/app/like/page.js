@@ -48,6 +48,27 @@ export default function Like() {
   };
 
 
+  useEffect(() => {
+    // Check if the user has scrolled to the bottom of the page
+    const handleScroll = () => {
+      if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+        // If at the bottom and there is a next page, fetch it
+        if (hasNextPage) {
+          fetchNextPage();
+        }
+      }
+    };
+
+    // Add the scroll event listener when the component mounts
+    window.addEventListener('scroll', handleScroll);
+
+    // Remove the scroll event listener when the component unmounts
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [hasNextPage, fetchNextPage]);
+
+
 
   return (
     <main>

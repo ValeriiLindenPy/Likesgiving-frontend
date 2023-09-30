@@ -46,9 +46,9 @@ export default async function Comment({ params }) {
 
           <CommentFormComponent type="like" token={session?.token} post={params.postid} />
 
-          {data.post_comments?.map((comment) => (
-            <CommentComponent key={comment.id} comment={comment} type="like" />
-          ))}
+          <CommentComponent idPost={params.postid} token={session?.token} type="like" />
+
+
 
         </div>
 

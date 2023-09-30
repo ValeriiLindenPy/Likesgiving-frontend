@@ -22,15 +22,17 @@ export const CommentFormComponent = ({ type, token, post }) => {
                         'Authorization': `Token ${token}`,
                         'Content-Type': 'multipart/form-data',
                     },
+                    params: { post: post },
                 };
-                const response = await api.post(`posts/add_comment/${post}/`, {
+                const response = await api.post(`posts/v1/comment/`, {
                     text: values.text,
+                    post: post
                 }, config);
 
                 console.log(response);
 
                 if (response.status === 201) {
-                    alert('Done')
+
                 }
 
                 if (response.error) {
@@ -58,7 +60,7 @@ export const CommentFormComponent = ({ type, token, post }) => {
                     <div className={styles.CommentContent}>
                         <form onSubmit={formik.handleSubmit} autoComplete='off' className={styles.form}>
                             <div>
-                                <label className={styles.label} for="text">Add your comment:</label>
+                                <label className={styles.label} htmlFor="text">Add your comment:</label>
                                 <textarea
                                     rows="7"
                                     cols="50"

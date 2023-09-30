@@ -1,5 +1,5 @@
 "use client";
-import { useState, Fragment } from "react";
+import { useState, Fragment, useEffect } from "react";
 import { getPosts } from "@/lib/get-posts";
 import { useSession } from "next-auth/react";
 import { Post } from "@/components/Posts";
@@ -9,6 +9,7 @@ import { AddPostModal } from "@/components/Modals/AddPost";
 import Loader from "@/components/Loader";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import InfiniteScroll from "react-infinite-scroll-component";
+
 
 export default function Dislike() {
   const [modal, setModal] = useState(false);
@@ -42,6 +43,27 @@ export default function Dislike() {
   const addPost = () => {
     setModal(!modal);
   };
+
+
+  useEffect(() => {
+    // Check if the user has scrolled to the bottom of the page
+    const handleScroll = () => {
+      if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+        // If at the bottom and there is a next page, fetch it
+        if (hasNextPage) {
+          fetchNextPage();
+        }
+      }
+    };
+
+    // Add the scroll event listener when the component mounts
+    window.addEventListener('scroll', handleScroll);
+
+    // Remove the scroll event listener when the component unmounts
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [hasNextPage, fetchNextPage]);
 
   return (
     <main

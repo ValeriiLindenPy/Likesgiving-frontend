@@ -50,9 +50,9 @@ export default async function Comment({ params }) {
 
           <CommentFormComponent type="dislike" token={session?.token} post={params.postid} />
 
-          {data.post_comments?.map((comment) => (
-            <CommentComponent key={comment.id} comment={comment} type="dislike" />
-          ))}
+
+          <CommentComponent idPost={params.postid} token={session?.token} type="dislike" />
+
 
         </div>
 
