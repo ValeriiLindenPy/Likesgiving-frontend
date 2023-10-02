@@ -1,0 +1,26 @@
+.blackbg {
+    background: #131313;
+    color: white;
+}
+
+.profileContainer {}
+
+
+.profilePhotoContainer {
+    margin-top: 50px;
+}
+
+.profilePhoto {
+    border-radius: 50%;
+}
+
+.profileName {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.profileStat {
+    margin-top: 10px;
+    text-align: center;
+
+}

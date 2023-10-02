@@ -28,7 +28,7 @@ export const confirmPassword = yup.object().shape({
     re_password: yup.string().oneOf([yup.ref('password'), null], 'Passwords must match my friend)').required('Required'),
 });
 
-const MAX_FILE_SIZE = 2000000;
+const MAX_FILE_SIZE = 20 * 1024 * 1024;
 
 const validFileExtensions = { image: ['jpg', 'png', 'jpeg', 'webp'] };
 
@@ -42,10 +42,13 @@ export const addPostSchema = yup.object().shape({
     text: yup.string().max(1000).required('Please write something'),
     emotion: yup.string().max(30).required('Your emotion is important'),
     picture: yup.mixed()
-        .required("Required")
-        .test("is-valid-type", "Not a valid image type jpg, png, jpeg, webp",
-            value => value && isValidFileType(value.name, "image"))
-        .test("is-valid-size", "Max allowed size is 20Mb",
-            value => value && value.size <= MAX_FILE_SIZE),
+        .nullable()
+        .test("is-valid-picture", "Please upload a valid image (jpg, png, jpeg, webp) with a maximum size of 20Mb", (value) => {
+            if (!value) {
+                return true; // No picture provided, so no validation needed.
+            }
+            // Validation for picture type and size
+            return isValidFileType(value.name, ["jpg", "png", "jpeg", "webp"]) && value.size <= MAX_FILE_SIZE;
+        }),
 });
 

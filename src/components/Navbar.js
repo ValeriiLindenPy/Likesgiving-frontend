@@ -6,12 +6,15 @@ import { usePathname } from 'next/navigation';
 import { FaHome, FaUserAlt } from 'react-icons/fa';
 import { IoHeartDislikeOutline, IoHeartOutline } from 'react-icons/io5';
 import { RiLogoutCircleLine } from 'react-icons/ri';
+import { useSelector } from 'react-redux';
 
 
 export default function NavBar() {
   const { data: session } = useSession();
   const pathname = usePathname()
   const isDislike = pathname.includes("dislike")
+  const likeStatus = useSelector((state) => state.auth.likeStatus)
+
 
 
   if (!session) {
@@ -22,7 +25,7 @@ export default function NavBar() {
 
 
   return (
-    <nav className={isDislike ? 'dark-nav' : 'nav'} >
+    <nav className={isDislike || (likeStatus === 'Disliker' && pathname === '/profile') ? 'dark-nav' : 'nav'} >
       <ul >
         <li className='user'>
           {session && <Link href="/profile"><FaUserAlt size={25} /></Link>}

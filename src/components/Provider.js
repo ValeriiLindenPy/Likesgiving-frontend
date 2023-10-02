@@ -3,14 +3,17 @@
 
 import { SessionProvider } from 'next-auth/react'
 import { CheckWrapper } from './CheckWrapper';
+import { ReduxProvider } from '@/redux/ReduxProvider';
 
 const Provider = ({ children }) => {
 
   return (
     <SessionProvider>
-      <CheckWrapper>
-        {children}
-      </CheckWrapper>
+      <ReduxProvider>
+        <CheckWrapper>
+          {children}
+        </CheckWrapper>
+      </ReduxProvider>
     </SessionProvider>
 
   )

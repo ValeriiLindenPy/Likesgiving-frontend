@@ -18,7 +18,7 @@ export const AddPostModal = ({ onClick, type }) => {
         initialValues: {
             emotion: '',
             text: '',
-            picture: '',
+            picture: null,
         },
         validationSchema: addPostSchema,
         onSubmit: async (values, actions) => {
@@ -30,12 +30,20 @@ export const AddPostModal = ({ onClick, type }) => {
                         'Content-Type': 'multipart/form-data',
                     },
                 };
-                const response = await api.post('posts/create_post/', {
-                    post_type: type,
-                    emotion: values.emotion,
-                    text: values.text,
-                    picture: values.picture,
-                }, config);
+
+                const formData = new FormData();
+
+                // Add the fields to the FormData object
+                formData.append('post_type', type);
+                formData.append('emotion', values.emotion);
+                formData.append('text', values.text);
+
+                // Check if the 'picture' field is provided before appending it
+                if (values.picture) {
+                    formData.append('picture', values.picture);
+                }
+
+                const response = await api.post('posts/v1/post/', formData, config);
 
                 console.log(response);
 
