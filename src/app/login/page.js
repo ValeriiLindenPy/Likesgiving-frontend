@@ -84,7 +84,7 @@ export default function LogIn() {
           <p style={{
 
             fontSize: '20px'
-          }}>Don't have an account</p> <Link href='/register' style={{
+          }}>{"Don`t have an account"}</p> <Link href='/register' style={{
             color: 'black',
             paddingLeft: '3px',
             fontSize: '20px',

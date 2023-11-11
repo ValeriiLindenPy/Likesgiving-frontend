@@ -61,6 +61,7 @@
 
 
 .postLike {
+    background-color: white;
     display: flex;
     flex-direction: column;
     max-width: 700px;
@@ -68,6 +69,7 @@
     border-radius: 13px;
     padding: 0.3em;
     margin: 1.2em;
+    color: #131313;
 
 }
 

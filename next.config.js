@@ -7,4 +7,7 @@ module.exports = {
     images: {
         domains: ['newihlbucket.s3.amazonaws.com'], // Add your image domain here
     },
+    distDir: 'build2',
+    output: 'export',
+
 };

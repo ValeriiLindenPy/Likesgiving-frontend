@@ -1,0 +1,22 @@
+.bar {
+    border: 5px solid black;
+    height: 60px;
+    width: 100%;
+}
+
+
+.dislikes {
+    background-color: black;
+    height: 100%;
+}
+
+.likes {
+    background-color: white;
+    height: 100%;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}

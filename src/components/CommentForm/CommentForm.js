@@ -24,7 +24,7 @@ export const CommentFormComponent = ({ type, token, post }) => {
                     },
                     params: { post: post },
                 };
-                const response = await api.post(`posts/v1/comment/`, {
+                const response = await api.post(`posts/v1/comments/`, {
                     text: values.text,
                     post: post
                 }, config);

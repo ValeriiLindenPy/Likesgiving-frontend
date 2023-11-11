@@ -7,7 +7,7 @@ import { CommentFormComponent } from "@/components/CommentForm/CommentForm";
 
 async function getData(id, token) {
   try {
-    const url = `http://127.0.0.1:8000/posts/v1/post/${id}/`;
+    const url = `http://127.0.0.1:8000/posts/v1/posts/${id}/`;
     const response = await fetch(url, {
       method: 'GET',
       headers: {

@@ -19,7 +19,7 @@ export const CommentComponent = ({ token, idPost, type }) => {
 
         try {
             console.log(pageParam)
-            const url = `http://127.0.0.1:8000/posts/v1/comment/?page=${pageParam}&post=${idPost}`;
+            const url = `http://127.0.0.1:8000/posts/v1/comments/?page=${pageParam}&post=${idPost}`;
             const response = await fetch(url, {
                 method: 'GET',
                 headers: {

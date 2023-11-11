@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Montserrat:wght@400;700&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,600&display=swap');
+
 
 
 
@@ -222,9 +224,46 @@ main {
 	box-sizing: border-box;
 }
 
+/* Home */
+
+.homeMain {
+	height: 100vh;
+	background: url('/vectorhome.png') bottom right no-repeat;
+	z-index: 1000;
+}
+
+.homeBar {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	margin-top: 300px;
+	width: 500px;
+	min-width: 400px;
+}
+
+
+.homeBar h1 {
+	font-size: 53px;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 600;
+}
+
+.homeBar h2 {
+	font-size: 33px;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 600;
+}
+
 
 
 @media (max-width: 820px) {
+
+	.homeMain {
+
+		background: white;
+
+	}
+
 	.nav {
 
 		position: fixed;

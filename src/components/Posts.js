@@ -23,7 +23,8 @@ export const Post = ({ post, type }) => {
     const likesStatus = post?.likes?.includes(Number(session?.sub))
     const [isLiked, setIsLiked] = useState(likesStatus)
     const [liked, setLiked] = useState(isLiked);
-    const commentURL = `/${type}/comments/${post?.id}`
+    const commentURL = `/${type}/comments/${post?.id}`;
+
 
 
 
@@ -69,7 +70,7 @@ export const Post = ({ post, type }) => {
                             </div>
 
                             <div className={styles.text}>
-                                <p>{post.text}</p>
+                                <p style={type === 'dislike' ? { color: 'white' } : { color: '#131313' }}>{post.text}</p>
                             </div>
 
 

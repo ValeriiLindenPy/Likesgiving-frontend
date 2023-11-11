@@ -43,7 +43,7 @@ export const AddPostModal = ({ onClick, type }) => {
                     formData.append('picture', values.picture);
                 }
 
-                const response = await api.post('posts/v1/post/', formData, config);
+                const response = await api.post('posts/v1/posts/', formData, config);
 
                 console.log(response);
 
