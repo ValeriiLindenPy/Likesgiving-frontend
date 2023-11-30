@@ -39,7 +39,7 @@ export const Post = ({ post, type }) => {
         if (isLiked) {
             setLiked(isLiked);
         }
-    }, [isLiked]);
+    }, []);
     
 
 

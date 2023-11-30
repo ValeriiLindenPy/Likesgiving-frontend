@@ -1,10 +1,35 @@
 "use client";
-import styles from './forgotPassword.module.css'
-import Image from 'next/image'
+import styles from './forgotPassword.module.css';
+import Image from 'next/image';
 import { useFormik } from 'formik';
 import { paswwordForgot } from '@/schemas';
+import useSWR, { mutate } from 'swr';
+
+const fetcher = async (url, email) => {
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ email }),
+  });
+
+  if (!response.ok) {
+    throw new Error('Network response was not ok');
+  }
+
+  return response.json();
+};
 
 export default function ForgotPassword() {
+  const { data, error, mutate: mutateData } = useSWR(
+    'https://ihl-project-606adf7a8500.herokuapp.com/auth/password_reset/',
+    fetcher,
+    {
+      revalidateOnFocus: false,
+      revalidateOnReconnect: false,
+    }
+  );
 
   const formik = useFormik({
     initialValues: {
@@ -12,20 +37,11 @@ export default function ForgotPassword() {
     },
     validationSchema: paswwordForgot,
     onSubmit: async (values, actions) => {
-      console.log(values.email);
       try {
-        const response = await fetch('https://ihl-project-606adf7a8500.herokuapp.com/auth/password_reset/', {
-          method: 'POST',
-          cache: "force-cache",
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ email: values.email }),
+        // Trigger a re-fetch when the form is submitted
+        await mutate('https://ihl-project-606adf7a8500.herokuapp.com/auth/password_reset/', async () => {
+          await fetcher('https://ihl-project-606adf7a8500.herokuapp.com/auth/password_reset/', values.email);
         });
-
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
 
         console.log('done');
         actions.resetForm();

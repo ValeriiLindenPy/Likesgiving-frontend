@@ -61,7 +61,7 @@ export default function Profile() {
             }
         }
         fetchData();
-    }, [profileData?.statistics, dispatch]);
+    }, [profileData?.statistics]);
 
     useEffect(() => {
         const handleScroll = () => {
