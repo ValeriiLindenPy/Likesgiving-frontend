@@ -39,7 +39,7 @@ export default function SignUp() {
           const response = await signIn('credentials', {
             email: values.email,
             password: values.password,
-            callbackUrl: 'http://localhost:4000/'
+            callbackUrl: 'https://thanksgiving-j6r1q1qck-valeriis-projects-0ac1b84e.vercel.app/'
           });
 
           actions.resetForm();
