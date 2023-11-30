@@ -1,6 +1,5 @@
 "use client";
 
-import api from '../api/auth/baseaxios';
 import { useSession } from 'next-auth/react';
 import { useQuery } from '@tanstack/react-query';
 import Loader from '@/components/Loader';
@@ -14,7 +13,6 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { getPosts } from '@/lib/get-posts';
 
-
 export default function Profile() {
     const { data: session } = useSession();
     const likeStatus = useSelector((state) => state.auth.likeStatus);
@@ -22,19 +20,21 @@ export default function Profile() {
     const [postType, setType] = useState('like');
 
     const config = {
+        
         headers: {
             'Authorization': `Token ${session?.token}`,
         },
+        cache: "force-cache",
     };
 
     const { data: profileData } = useQuery({
         queryKey: ['ProfileData'],
         queryFn: async () => {
-            const response = await api.get('/auth/profile/', config);
-            return response.data;
+            const response = await fetch('https://ihl-project-606adf7a8500.herokuapp.com/auth/profile/', config);
+            const data = await response.json();
+            return data;
         }
     });
-
 
     const { data, isLoading, fetchNextPage, isFetchingNextPage, hasNextPage, isError } = useInfiniteQuery(
         ['query', postType],
@@ -44,13 +44,9 @@ export default function Profile() {
         },
         {
             getNextPageParam: (lastPage, allPages) => {
-
-                // Check if there is a next page available
                 if (lastPage?.next) {
                     return allPages.length + 1;
                 }
-
-                // If there is no next page, return undefined
                 return undefined;
             },
         }
@@ -65,32 +61,23 @@ export default function Profile() {
             }
         }
         fetchData();
-    }, [profileData?.statistics]);
-
+    }, [profileData?.statistics, dispatch]);
 
     useEffect(() => {
-        // Check if the user has scrolled to the bottom of the page
         const handleScroll = () => {
             if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-                // If at the bottom and there is a next page, fetch it
                 if (hasNextPage) {
                     fetchNextPage();
                 }
             }
         };
-
-        // Add the scroll event listener when the component mounts
         window.addEventListener('scroll', handleScroll);
-
-        // Remove the scroll event listener when the component unmounts
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
     }, [hasNextPage, fetchNextPage]);
 
     console.log(likeStatus);
-
-
 
     return (
         <>
@@ -105,7 +92,6 @@ export default function Profile() {
                     <div className={styles.profileStat}>
                         <h2>{profileData?.statistics.like_posts} L : {profileData?.statistics.dislike_posts} D</h2>
                     </div>
-
 
                     <div className={likeStatus === 'Disliker' ? styles.blackbg : styles.whitebg}>
                         <div className={likeStatus === 'Disliker' ? styles.switchButtosBlack : styles.whitebg}>
@@ -127,21 +113,14 @@ export default function Profile() {
                             <InfiniteScroll
                                 next={fetchNextPage}
                                 hasMore={hasNextPage || false}
-                                dataLength={
-                                    data?.pages.count || 0
-                                }
+                                dataLength={data?.pages.count || 0}
                             >
                                 {data?.pages.map((posts, id) => (
                                     <Fragment key={id}>
-
                                         {posts?.results.map((post) => (
                                             (postType === 'like' ? <Post key={post.id} post={post} type={postType} /> : <Post key={post.id} post={post} type={postType} />)
                                         ))}
-
                                     </Fragment>
-
-
-
                                 ))}
                             </InfiniteScroll>
                         )}

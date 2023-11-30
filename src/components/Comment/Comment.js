@@ -19,8 +19,9 @@ export const CommentComponent = ({ token, idPost, type }) => {
 
         try {
             console.log(pageParam)
-            const url = `http://127.0.0.1:8000/posts/v1/comments/?page=${pageParam}&post=${idPost}`;
+            const url = `https://ihl-project-606adf7a8500.herokuapp.com/posts/v1/comments/?page=${pageParam}&post=${idPost}`;
             const response = await fetch(url, {
+                cache: "force-cache",
                 method: 'GET',
                 headers: {
                     'Authorization': `Token ${token}`,

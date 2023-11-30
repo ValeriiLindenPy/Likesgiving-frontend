@@ -1,29 +1,27 @@
-import api from "@/app/api/auth/baseaxios";
-
-
-
 
 
 export const getPosts = async (postType, token, pageNumber, author = null) => {
     try {
-
-        let url = `posts/v1/posts/?post_type=${postType}&page=${pageNumber}`
+        let url = `https://ihl-project-606adf7a8500.herokuapp.com/posts/v1/posts/?post_type=${postType}&page=${pageNumber}`;
 
         if (author !== null) {
-            url = `posts/v1/posts/?author=${author}&post_type=${postType}&page=${pageNumber}`
+            url = `https://ihl-project-606adf7a8500.herokuapp.com/posts/v1/posts/?author=${author}&post_type=${postType}&page=${pageNumber}`;
         }
 
-        const response = await api.get(url, {
+        const response = await fetch(url, {
+            method: 'GET',
             headers: {
                 Authorization: `Token ${token}`,
             },
         });
-        if (response.status === 200) {
-            return response.data;
+
+        if (response.ok) {
+            const data = await response.json();
+            return data;
         } else {
-            console.log(response.status)
+            console.log(response.status);
         }
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
 };

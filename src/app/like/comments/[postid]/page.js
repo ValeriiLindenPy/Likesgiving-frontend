@@ -7,8 +7,9 @@ import { CommentFormComponent } from "@/components/CommentForm/CommentForm";
 
 async function getData(id, token) {
   try {
-    const url = `http://127.0.0.1:8000/posts/v1/posts/${id}/`;
+    const url = `https://ihl-project-606adf7a8500.herokuapp.com/posts/v1/posts/${id}/`;
     const response = await fetch(url, {
+      cache: "force-cache",
       method: 'GET',
       headers: {
         'Authorization': `Token ${token}`,
@@ -58,4 +59,15 @@ export default async function Comment({ params }) {
     </>
 
   );
+}
+
+export async function generateStaticParams() {
+
+  const staticParams = [
+      { 
+         postid: '31', 
+
+      }
+  ]
+  return staticParams;
 }

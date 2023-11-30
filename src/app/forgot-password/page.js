@@ -3,13 +3,8 @@ import styles from './forgotPassword.module.css'
 import Image from 'next/image'
 import { useFormik } from 'formik';
 import { paswwordForgot } from '@/schemas';
-import api from '../api/auth/baseaxios';
-
-
-
 
 export default function ForgotPassword() {
-
 
   const formik = useFormik({
     initialValues: {
@@ -19,28 +14,27 @@ export default function ForgotPassword() {
     onSubmit: async (values, actions) => {
       console.log(values.email);
       try {
-        await api.post('/auth/password_reset/', {
-          'email': values.email,
+        const response = await fetch('https://ihl-project-606adf7a8500.herokuapp.com/auth/password_reset/', {
+          method: 'POST',
+          cache: "force-cache",
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email: values.email }),
         });
 
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
 
         console.log('done');
-
-
         actions.resetForm();
-
-
       } catch (error) {
-        console.log(error);
+        console.error('There was a problem with the fetch operation:', error);
         // Handle error if any exception occurs during the try block
-
-
       }
     },
   });
-
-
-
 
   return (
     <main className={styles.main}>
@@ -64,5 +58,5 @@ export default function ForgotPassword() {
         </form>
       </div>
     </main>
-  )
+  );
 }

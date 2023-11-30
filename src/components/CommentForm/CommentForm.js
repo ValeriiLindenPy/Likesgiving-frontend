@@ -1,13 +1,7 @@
 "use client";
 
 import { useFormik } from 'formik';
-import styles from './CommentForm.module.css'
-import api from '@/app/api/auth/baseaxios';
-
-
-
-
-
+import styles from './CommentForm.module.css';
 
 export const CommentFormComponent = ({ type, token, post }) => {
     const formik = useFormik({
@@ -16,42 +10,38 @@ export const CommentFormComponent = ({ type, token, post }) => {
         },
         onSubmit: async (values, actions) => {
             try {
+                const formData = new FormData();
+                formData.append('text', values.text);
+                formData.append('post', post);
 
                 const config = {
+                    method: 'POST',
+                    cache: "force-cache",
                     headers: {
                         'Authorization': `Token ${token}`,
-                        'Content-Type': 'multipart/form-data',
                     },
-                    params: { post: post },
+                    body: formData,
                 };
-                const response = await api.post(`posts/v1/comments/`, {
-                    text: values.text,
-                    post: post
-                }, config);
 
-                console.log(response);
+                const response = await fetch(`https://ihl-project-606adf7a8500.herokuapp.com/posts/v1/comments/?post=${post}`, config);
+                const responseData = await response.json();
 
-                if (response.status === 201) {
+                console.log(responseData);
 
+                if (response.ok) {
+                    // Handle success
+                } else {
+                    // Handle error
+                    console.log(responseData.error);
                 }
-
-                if (response.error) {
-                    // Handle error if authentication fails
-                    console.log(response.error)
-                }
-
-
 
                 actions.resetForm();
             } catch (error) {
-                // Handle error if sign-in throws an exception
-                console.log(error)
+                // Handle error
+                console.log(error);
             }
         },
     });
-
-
-
 
     return (
         <>
@@ -72,18 +62,14 @@ export const CommentFormComponent = ({ type, token, post }) => {
                                     onBlur={formik.handleBlur}
                                     placeholder='Text...'
                                     className={styles.area}
-
                                 />
                             </div>
 
                             <button className={type === 'dislike' ? styles.buttonBlack : styles.button} type='button' onClick={formik.handleSubmit}>SEND</button>
-
                         </form>
-
                     </div>
                 </div>
             </div>
-
         </>
     );
-}
+};

@@ -1,0 +1,360 @@
+/*!***************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[12].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[12].oneOf[7].use[3]!./src/components/Posts.module.css ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************/
+.Posts_postImg__GjJBy {
+    padding: 2px;
+    margin-top: 12px;
+
+}
+
+.Posts_authorName__zNomM {
+    font-weight: 700;
+    padding-top: 10px;
+}
+
+.Posts_emotion__Gm9UZ {
+    color: rgb(83, 100, 113);
+    padding-top: 10px;
+    font-style: italic;
+}
+
+.Posts_text__6poMn {
+    padding-top: 10px;
+}
+
+.Posts_postComment__GbGmg {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 1em;
+}
+
+
+
+.Posts_postItems__OHWOh {
+
+    border: 1px solid #131313;
+    border-radius: 10px;
+    margin-bottom: 0.4em;
+}
+
+.Posts_postItemsDislike__ha3Yo {
+
+    border: 1px solid #ffffff;
+    border-radius: 10px;
+    margin-bottom: 0.4em;
+}
+
+.Posts_itemsContent__NU_nc {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 3px;
+    justify-content: center;
+
+}
+
+.Posts_postLikes__CnC1_ {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 3em;
+}
+
+
+
+.Posts_postLike__zpO7K {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    max-width: 700px;
+    border: 2px solid rgb(239, 243, 244);
+    border-radius: 13px;
+    padding: 0.3em;
+    margin: 1.2em;
+    color: #131313;
+
+}
+
+.Posts_postLike__zpO7K article {
+    padding: 12px 16px 0 16px;
+    display: flex;
+}
+
+.Posts_postLikeAuthor__KzvPq {
+    padding-right: 12px;
+}
+
+.Posts_authorImg__V25uj {
+    border-bottom-left-radius: 9999px;
+    border-bottom-right-radius: 9999px;
+    border-top-left-radius: 9999px;
+    border-top-right-radius: 9999px;
+
+}
+
+.Posts_postDate__yGia1 {
+    color: rgb(83, 100, 113);
+    font-size: 15px;
+}
+
+.Posts_postData__lcyuf {
+    display: flex;
+    flex-direction: column;
+}
+
+.Posts_postDisike__iJ6MP {
+    display: flex;
+    flex-direction: column;
+    max-width: 700px;
+    border: 1px solid rgb(217, 217, 217);
+    border-radius: 13px;
+    padding: 0.3em;
+    margin: 1.2em;
+}
+
+.Posts_postDisike__iJ6MP article {
+    padding: 12px 16px 0 16px;
+    display: flex;
+}
+
+
+
+
+@media (max-width: 820px) {}
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[12].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[12].oneOf[7].use[3]!./src/components/AddPostButton/PostButton.module.css ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************/
+.PostButton_button__aKw9r {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    background-color: #000000;
+    border: none;
+    color: white;
+    display: block;
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    border-radius: 50%;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    font-size: 2em;
+}
+
+.PostButton_button__aKw9r:hover {
+    box-shadow: none;
+}
+
+.PostButton_buttonBlack__FKIjD {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    background-color: #ffffff;
+    border: none;
+    color: rgb(0, 0, 0);
+    display: block;
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    border-radius: 50%;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: rgba(222, 219, 219, 0.35) 0px 5px 15px;
+    font-size: 2em;
+
+}
+
+.PostButton_buttonBlack__FKIjD:hover {
+    box-shadow: none;
+}
+/*!************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[12].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[12].oneOf[7].use[3]!./src/components/Modals/AddPost.module.css ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************/
+/* AddPost.module.css */
+
+.AddPost_modal__D4_5Q {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    z-index: 1000;
+}
+
+.AddPost_overlay__0N4CM {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.AddPost_modalContent__PT_Bo {
+    position: relative;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 50%;
+    text-align: center;
+}
+
+.AddPost_closeModal__MLuuW {
+    border: none;
+    background: none;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.AddPost_error__IJIj5 {
+    border: 3px solid red !important;
+}
+
+.AddPost_inputField__tPeUw {
+    border: 1px solid black;
+    width: 92%;
+    height: 20px;
+    justify-content: center;
+    display: flex;
+    margin: 10px auto;
+    padding: 10px;
+    outline: none;
+    border-radius: 5px;
+}
+
+.AddPost_uploadField__gGT1X {
+    margin-top: 1em;
+    width: 92%;
+    max-width: 100%;
+    color: #444;
+    padding: 5px;
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid #555;
+}
+
+.AddPost_uploadField__gGT1X::-webkit-file-upload-button {
+    margin-right: 20px;
+    border: none;
+    background: #084cdf;
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    -webkit-transition: background .2s ease-in-out;
+    transition: background .2s ease-in-out;
+}
+
+.AddPost_uploadField__gGT1X::file-selector-button {
+    margin-right: 20px;
+    border: none;
+    background: #084cdf;
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    transition: background .2s ease-in-out;
+}
+
+
+.AddPost_uploadField__gGT1X::-webkit-file-upload-button:hover {
+    background: #0d45a5;
+}
+
+
+.AddPost_uploadField__gGT1X::file-selector-button:hover {
+    background: #0d45a5;
+}
+
+.AddPost_uploadFieldError__qTx6k {
+    border: 1px solid #ff0000;
+    margin-top: 1em;
+    width: 92%;
+    max-width: 100%;
+    color: #444;
+    padding: 5px;
+    background: #fff;
+    border-radius: 10px;
+
+}
+
+.AddPost_error__IJIj5 {
+    border: 1px solid #ff0000;
+    width: 92%;
+    height: 20px;
+    justify-content: center;
+    display: flex;
+    margin: 10px auto;
+    padding: 10px;
+    outline: none;
+    border-radius: 5px;
+}
+
+.AddPost_uploadFieldError__qTx6k::-webkit-file-upload-button {
+    margin-right: 20px;
+    border: none;
+    background: #084cdf;
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    -webkit-transition: background .2s ease-in-out;
+    transition: background .2s ease-in-out;
+}
+
+.AddPost_uploadFieldError__qTx6k::file-selector-button {
+    margin-right: 20px;
+    border: none;
+    background: #084cdf;
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    transition: background .2s ease-in-out;
+}
+
+.AddPost_uploadFieldError__qTx6k::-webkit-file-upload-button:hover {
+    background: #0d45a5;
+}
+
+.AddPost_uploadFieldError__qTx6k::file-selector-button:hover {
+    background: #0d45a5;
+}
+
+.AddPost_button__XI6aZ {
+    width: 100%;
+    height: 40px;
+    margin: 10px auto;
+    justify-content: center;
+    display: block;
+    color: #000;
+    background: #fff;
+    font-size: 1em;
+    font-weight: bold;
+    margin-top: 30px;
+    outline: none;
+    border: 1px solid black;
+    border-radius: 5px;
+    transition: .2s ease-in;
+    cursor: pointer;
+}
+
+.AddPost_button__XI6aZ:hover {
+    background: #000000;
+    color: #ffffff;
+}
+
+.AddPost_button__XI6aZ:disabled {
+    background: #bebdbd;
+    color: #777272;
+    border-color: #777272;
+
+}

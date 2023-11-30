@@ -1,0 +1,90 @@
+- src
+   middleware.js
+- app
+   favicon.ico
+   globals.css
+   layout.js
+   loading.js
+   page.js
+  -- api
+    --- auth
+       baseaxios.js
+      ---- [...nextauth]
+         route.js
+  -- assets
+     loader.gif
+  -- dislike
+     layout.js
+     page.js
+    --- comments
+      ---- [postid]
+         Comment.module.css
+         page.js
+  -- forgot-password
+     forgotPassword.module.css
+     loading.js
+     page.js
+  -- like
+     layout.js
+     loading.js
+     page.js
+    --- comments
+      ---- [postid]
+         Comment.module.css
+         page.js
+  -- login
+     loading.js
+     login.module.css
+     page.js
+  -- password-change-confirm
+     loading.js
+     page.js
+     PCC.module.css
+  -- profile
+     layout.js
+     loading.js
+     page.js
+     Profile.module.css
+  -- register
+     loading.js
+     page.js
+     register.module.css
+- components
+   CheckWrapper.js
+   Date.js
+   Loader.js
+   Navbar.js
+   Posts.js
+   Posts.module.css
+   Provider.js
+  -- AddPostButton
+     PostButton.js
+     PostButton.module.css
+  -- Comment
+     Comment.js
+     Comment.module.css
+  -- CommentForm
+     CommentForm.js
+     CommentForm.module.css
+  -- Modals
+     AddPost.js
+     AddPost.module.css
+  -- PostsComponents
+     Posts.js
+  -- Query
+     QueryProvider.js
+  -- StatisticBar
+     SBar.js
+     SBar.module.css
+- lib
+   get-posts.js
+   makeLike.js
+   numberFormate.js
+- pages
+- redux
+   ReduxProvider.js
+   store.js
+  -- features
+     auth-slice.js
+- schemas
+   index.js

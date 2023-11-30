@@ -36,13 +36,11 @@ export const Post = ({ post, type }) => {
 
 
     useEffect(() => {
-
         if (isLiked) {
             setLiked(isLiked);
         }
-
-    }, []);
-
+    }, [isLiked]);
+    
 
 
 

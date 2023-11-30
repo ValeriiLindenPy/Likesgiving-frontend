@@ -5,9 +5,9 @@ module.exports = nextConfig
 
 module.exports = {
     images: {
-        domains: ['newihlbucket.s3.amazonaws.com'], // Add your image domain here
+        domains: ['newihlbucket.s3.amazonaws.com'],
     },
-    distDir: 'build2',
-    output: 'export',
-
+    distDir: 'build-finale',
+    
 };
+

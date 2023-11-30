@@ -7,10 +7,7 @@ import { signIn, useSession } from 'next-auth/react';
 import Link from 'next/link';
 
 
-
-
 export default function LogIn() {
-  const { data: session, status } = useSession();
 
   const formik = useFormik({
     initialValues: {
@@ -33,8 +30,7 @@ export default function LogIn() {
 
         actions.resetForm();
       } catch (error) {
-        // Handle error if sign-in throws an exception
-        console.log(error)
+
       }
     },
   })

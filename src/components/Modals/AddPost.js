@@ -2,14 +2,9 @@
 import { AiFillCloseCircle } from "react-icons/ai";
 import { useFormik } from 'formik';
 import styles from './AddPost.module.css'
-import api from "@/app/api/auth/baseaxios";
 import { addPostSchema } from '@/schemas';
 import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
-
-
-
-
 
 export const AddPostModal = ({ onClick, type }) => {
     const { data: session } = useSession();
@@ -23,14 +18,6 @@ export const AddPostModal = ({ onClick, type }) => {
         validationSchema: addPostSchema,
         onSubmit: async (values, actions) => {
             try {
-
-                const config = {
-                    headers: {
-                        'Authorization': `Token ${session?.token}`,
-                        'Content-Type': 'multipart/form-data',
-                    },
-                };
-
                 const formData = new FormData();
 
                 // Add the fields to the FormData object
@@ -43,30 +30,36 @@ export const AddPostModal = ({ onClick, type }) => {
                     formData.append('picture', values.picture);
                 }
 
-                const response = await api.post('posts/v1/posts/', formData, config);
+                const response = await fetch('https://ihl-project-606adf7a8500.herokuapp.com/posts/v1/posts/', {
+                    method: 'POST',
+                    cache: "force-cache",
+                    headers: {
+                        'Authorization': `Token ${session?.token}`,
+                    },
+                    body: formData,
+                });
 
-                console.log(response);
+                const responseData = await response.json();
+
+                console.log(responseData);
 
                 if (response.status === 201) {
                     return redirect('/' + type);
                 }
 
-                if (response.error) {
+                if (responseData.error) {
                     // Handle error if authentication fails
-                    console.log(response.error)
+                    console.log(responseData.error);
                 }
-
-
 
                 actions.resetForm();
             } catch (error) {
                 // Handle error if sign-in throws an exception
                 onClick();
-                console.log(error)
+                console.log(error);
             }
         },
-    })
-
+    });
 
     return (
         <>
@@ -74,17 +67,17 @@ export const AddPostModal = ({ onClick, type }) => {
 
                 <div className={styles.overlay}>
 
-
                     <div className={styles.modalContent}>
                         <button type='button' onClick={onClick} className={styles.closeModal}>
                             <AiFillCloseCircle size={30} />
                         </button>
 
-
-                        <form style={{
-                            paddingTop: '20px',
-                        }} onSubmit={formik.handleSubmit} autoComplete='off' encType="multipart/form-data">
-
+                        <form
+                            style={{ paddingTop: '20px' }}
+                            onSubmit={formik.handleSubmit}
+                            autoComplete='off'
+                            encType="multipart/form-data"
+                        >
                             <input
                                 id="emotion"
                                 name="emotion"
@@ -122,22 +115,15 @@ export const AddPostModal = ({ onClick, type }) => {
                                 className={formik.errors.picture && formik.touched.picture ? styles.uploadFieldError : styles.uploadField}
                             />
                             {formik.errors.picture && formik.touched.picture && <p className={styles.errorlabel}>{formik.errors.picture}</p>}
-                            <button className={styles.button} disabled={formik.isSubmitting} type='submit'>ADD POST</button>
 
+                            <button className={styles.button} disabled={formik.isSubmitting} type='submit'>ADD POST</button>
                         </form>
 
 
 
                     </div>
-
-
-
                 </div>
             </div>
-
-
-
         </>
     );
-
 }

@@ -5,11 +5,13 @@ import { Post } from '@/components/Posts'
 import { CommentFormComponent } from "@/components/CommentForm/CommentForm";
 
 
+
 async function getData(id, token) {
   try {
-    const url = `http://127.0.0.1:8000/posts/v1/posts/${id}/`;
+    const url = `https://ihl-project-606adf7a8500.herokuapp.com/posts/v1/posts/${id}/`;
     const response = await fetch(url, {
       method: 'GET',
+      cache: "force-cache",
       headers: {
         'Authorization': `Token ${token}`,
       },
@@ -26,13 +28,13 @@ async function getData(id, token) {
   }
 }
 
+
+
 export default async function Comment({ params }) {
-  const session = await getServerSession(authOptions)
-  const data = await getData(params.postid, session?.token)
-
-
-
-
+  
+  const session = await getServerSession(authOptions);
+  const data = await getData(params.postid, session?.token);
+  
   return (
     <>
       <main style={{
@@ -62,4 +64,15 @@ export default async function Comment({ params }) {
     </>
 
   );
+}
+
+export async function generateStaticParams() {
+
+  const staticParams = [
+      { 
+         postid: '31', 
+
+      }
+  ]
+  return staticParams;
 }

@@ -23,8 +23,6 @@ export default function Dislike() {
     },
     {
       getNextPageParam: (lastPage, allPages) => {
-        console.log('lastPage: ', lastPage);
-        console.log('allPages: ', allPages);
 
         // Check if there is a next page available
         if (lastPage?.next) {

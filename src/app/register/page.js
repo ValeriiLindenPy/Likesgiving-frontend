@@ -3,14 +3,13 @@ import styles from './register.module.css'
 import Image from 'next/image'
 import { useFormik } from 'formik';
 import { signUpSchema } from '@/schemas';
-import { signIn, useSession } from 'next-auth/react';
-import api from '../api/auth/baseaxios';
+import { signIn } from 'next-auth/react';
+
 
 
 
 
 export default function SignUp() {
-  const { data: session, status } = useSession();
 
   const formik = useFormik({
     initialValues: {
@@ -22,10 +21,17 @@ export default function SignUp() {
     validationSchema: signUpSchema,
     onSubmit: async (values, actions) => {
       try {
-        const createUserResponse = await api.post('/auth/create/', {
-          user_name: values.user_name,
-          email: values.email,
-          password: values.password,
+        const createUserResponse = await fetch('https://ihl-project-606adf7a8500.herokuapp.com/auth/create/', {
+          method: 'POST',
+          cache: "force-cache",
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            user_name: values.user_name,
+            email: values.email,
+            password: values.password,
+          }),
         });
 
         if (createUserResponse.status === 201) {
@@ -36,15 +42,12 @@ export default function SignUp() {
             callbackUrl: 'http://localhost:4000/'
           });
 
-
-
           actions.resetForm();
         }
-
       } catch (error) {
         // Handle error if any exception occurs during the try block
         if (error.response && error.response.data) {
-          const responseData = error.response.data;
+          const responseData = await error.response.json();
 
           // Check if the 'email' field has an error message
           if (responseData.email && Array.isArray(responseData.email) && responseData.email.length > 0) {
@@ -58,15 +61,12 @@ export default function SignUp() {
 
           // Handle other errors or show a generic error message
         } else {
-          console.log(responseData)
+          console.log(error);
           // Handle non-response errors, e.g., network issues
         }
-
       }
     },
   });
-
-
 
 
   return (
