@@ -62,7 +62,6 @@ body {
 	box-sizing: border-box;
 	border: 2px solid #131313;
 	padding: 8px;
-	/* Push the centered items to the top */
 }
 
 .nav li a {
@@ -75,11 +74,6 @@ body {
 	border: 2px solid white;
 	border-radius: 3px;
 }
-
-
-
-
-
 
 /* darknavbar */
 
@@ -162,10 +156,6 @@ body {
 }
 
 
-.loaderPostItem {}
-
-.loaderPost {}
-
 .loaderPost:before {
 	content: "";
 	height: 100%;
@@ -197,7 +187,6 @@ main {
 	/* Fix the header at the top of the viewport */
 }
 
-
 .postHeaderDislike {
 	display: flex;
 	align-items: center;
@@ -214,8 +203,6 @@ main {
 	margin: 0 auto;
 
 }
-
-
 
 .post-container {
 
@@ -236,7 +223,7 @@ main {
 	display: flex;
 	flex-direction: column;
 	text-align: center;
-	margin-top: 300px;
+	margin-top: 150px;
 	width: 500px;
 	min-width: 400px;
 }
@@ -253,8 +240,6 @@ main {
 	font-family: 'Montserrat', sans-serif;
 	font-weight: 600;
 }
-
-
 
 @media (max-width: 820px) {
 
@@ -291,6 +276,7 @@ main {
 	}
 
 	.nav ul li {
+		padding: 4px;
 		border: none;
 	}
 

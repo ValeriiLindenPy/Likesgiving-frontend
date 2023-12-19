@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { useFormik } from 'formik';
 import { signUpSchema } from '@/schemas';
 import { signIn } from 'next-auth/react';
-
+import profilePicture from '@/app/assets/profilepic.png';
 
 
 
@@ -31,8 +31,11 @@ export default function SignUp() {
             user_name: values.user_name,
             email: values.email,
             password: values.password,
+            profile_picture: profilePicture,
           }),
         });
+
+        console.log(createUserResponse);
 
         if (createUserResponse.status === 201) {
           // User was successfully created, now proceed with signIn

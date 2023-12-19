@@ -3,7 +3,7 @@ import { getServerSession } from "next-auth"
 import { CommentComponent } from "@/components/Comment/Comment";
 import { Post } from '@/components/Posts'
 import { CommentFormComponent } from "@/components/CommentForm/CommentForm";
-
+import styles from './Comment.module.css'
 
 async function getData(id, token) {
   try {
@@ -38,11 +38,7 @@ export default async function Comment({ params }) {
     <>
       <main>
 
-        <div style={{
-          display: 'flex',
-          flexDirection: 'column',
-          width: '29%'
-        }}>
+      <div className ={styles.commentBody}>
           <Post type='like' post={data} />
 
           <CommentFormComponent type="like" token={session?.token} post={params.postid} />

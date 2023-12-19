@@ -44,3 +44,17 @@
 .buttonBlack:hover {
     box-shadow: none;
 }
+
+@media (max-width: 820px) {
+    .buttonBlack {
+        bottom: 100px;
+        right: 10px;
+
+    }
+
+    .button {
+        bottom: 100px;
+        right: 10px;
+    }
+
+}
