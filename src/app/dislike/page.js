@@ -9,11 +9,13 @@ import { AddPostModal } from "@/components/Modals/AddPost";
 import Loader from "@/components/Loader";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import InfiniteScroll from "react-infinite-scroll-component";
-
+import Link from "next/link";
+import { FaUserAlt } from 'react-icons/fa';
 
 export default function Dislike() {
   const [modal, setModal] = useState(false);
   const { data: session, status } = useSession();
+  const [isAtTop, setIsAtTop] = useState(true);
 
   const { data, isLoading, fetchNextPage, isFetchingNextPage, hasNextPage } = useInfiniteQuery(
     ['query'],
@@ -44,24 +46,31 @@ export default function Dislike() {
 
 
   useEffect(() => {
-    // Check if the user has scrolled to the bottom of the page
     const handleScroll = () => {
+      if (window.scrollY > 10) {
+        setIsAtTop(false);
+      } else {
+        setIsAtTop(true);
+      }
+  
       if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-        // If at the bottom and there is a next page, fetch it
         if (hasNextPage) {
           fetchNextPage();
         }
       }
     };
-
-    // Add the scroll event listener when the component mounts
+  
     window.addEventListener('scroll', handleScroll);
-
-    // Remove the scroll event listener when the component unmounts
+  
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, [hasNextPage, fetchNextPage]);
+  
+  useEffect(() => {
+
+  }, [isAtTop]);
+  
 
   return (
     <main
@@ -73,6 +82,10 @@ export default function Dislike() {
     >
       <div className="postHeaderDislike">
         <IoHeartDislikeOutline size={35} color="white" />
+        {isAtTop ? <Link style={{
+          color: 'white',
+          textDecoration: 'none'
+        }} href="/profile"><FaUserAlt className= "userIconMobile" size={30} /></Link>: <></>}
       </div>
       <div className="post-container">
         <InfiniteScroll

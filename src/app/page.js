@@ -24,7 +24,7 @@ export default function Home() {
   };
 
   const { data, error } = useSWR('https://ihl-project-606adf7a8500.herokuapp.com/posts/get_statistics/', fetcher);
-  console.log(data);
+
 
   return (
     <main className="homeMain">

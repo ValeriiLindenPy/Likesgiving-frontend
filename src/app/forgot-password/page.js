@@ -43,10 +43,10 @@ export default function ForgotPassword() {
           await fetcher('https://ihl-project-606adf7a8500.herokuapp.com/auth/password_reset/', values.email);
         });
 
-        console.log('done');
+
         actions.resetForm();
       } catch (error) {
-        console.error('There was a problem with the fetch operation:', error);
+        
         // Handle error if any exception occurs during the try block
       }
     },

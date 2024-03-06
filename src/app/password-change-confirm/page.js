@@ -38,7 +38,7 @@ export default function ChangePasswordConfirm() {
 
         const changePassword = await fetch('https://ihl-project-606adf7a8500.herokuapp.com/auth/password_reset_confirm/', config);
 
-        console.log(changePassword.status);
+        https://thanksgiving-j6r1q1qck-valeriis-projects-0ac1b84e.vercel.appe.log(changePassword.status);
 
         if (changePassword.status === 200) {
           setChangeStatus(true);
@@ -49,7 +49,7 @@ export default function ChangePasswordConfirm() {
 
       } catch (error) {
         // Handle error if any exception occurs during the try block
-        console.log(error);
+        https://thanksgiving-j6r1q1qck-valeriis-projects-0ac1b84e.vercel.appe.log(error);
       }
     },
   });

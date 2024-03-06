@@ -25,7 +25,7 @@ export default function LogIn() {
 
         if (response.error) {
           // Handle error if authentication fails
-          console.log(response.error)
+
         }
 
         actions.resetForm();

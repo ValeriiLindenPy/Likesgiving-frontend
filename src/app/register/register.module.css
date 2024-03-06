@@ -76,3 +76,10 @@
 	;
 
 }
+
+.backSignIn {
+}
+
+.backSignIn p a {
+	font-weight: 700;
+}

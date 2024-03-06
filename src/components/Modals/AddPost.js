@@ -41,22 +41,20 @@ export const AddPostModal = ({ onClick, type }) => {
 
                 const responseData = await response.json();
 
-                console.log(responseData);
 
                 if (response.status === 201) {
                     return redirect('/' + type);
                 }
 
                 if (responseData.error) {
-                    // Handle error if authentication fails
-                    console.log(responseData.error);
+
                 }
 
                 actions.resetForm();
             } catch (error) {
                 // Handle error if sign-in throws an exception
                 onClick();
-                console.log(error);
+
             }
         },
     });

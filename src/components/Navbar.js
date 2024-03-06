@@ -10,6 +10,7 @@ import { useSelector } from 'react-redux';
 
 
 export default function NavBar() {
+  
   const { data: session } = useSession();
   const pathname = usePathname()
   const isDislike = pathname.includes("dislike")
@@ -44,6 +45,7 @@ export default function NavBar() {
           {session && <a onClick={signOut} > <RiLogoutCircleLine size={25} /> </a>}
 
         </li>
+
 
       </ul>
     </nav>

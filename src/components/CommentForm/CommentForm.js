@@ -26,19 +26,19 @@ export const CommentFormComponent = ({ type, token, post }) => {
                 const response = await fetch(`https://ihl-project-606adf7a8500.herokuapp.com/posts/v1/comments/?post=${post}`, config);
                 const responseData = await response.json();
 
-                console.log(responseData);
+  
 
                 if (response.ok) {
                     // Handle success
                 } else {
                     // Handle error
-                    console.log(responseData.error);
+
                 }
 
                 actions.resetForm();
             } catch (error) {
                 // Handle error
-                console.log(error);
+
             }
         },
     });

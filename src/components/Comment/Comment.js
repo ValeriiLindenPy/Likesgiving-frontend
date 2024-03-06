@@ -18,7 +18,7 @@ export const CommentComponent = ({ token, idPost, type }) => {
     const getData = async (pageParam) => {
 
         try {
-            console.log(pageParam)
+
             const url = `https://ihl-project-606adf7a8500.herokuapp.com/posts/v1/comments/?page=${pageParam}&post=${idPost}`;
             const response = await fetch(url, {
                 cache: "force-cache",
@@ -33,10 +33,10 @@ export const CommentComponent = ({ token, idPost, type }) => {
                 const data = await response.json();
                 return data;
             } else {
-                console.log(response);
+
             }
         } catch (error) {
-            console.log(error);
+
         }
     }
 

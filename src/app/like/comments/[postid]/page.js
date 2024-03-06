@@ -1,9 +1,10 @@
-import { authOptions } from "@/app/api/auth/[...nextauth]/route"
-import { getServerSession } from "next-auth"
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { getServerSession } from "next-auth";
 import { CommentComponent } from "@/components/Comment/Comment";
-import { Post } from '@/components/Posts'
+import { Post } from '@/components/Posts';
 import { CommentFormComponent } from "@/components/CommentForm/CommentForm";
-import styles from './Comment.module.css'
+import styles from './Comment.module.css';
+
 
 async function getData(id, token) {
   try {
@@ -20,7 +21,7 @@ async function getData(id, token) {
       const data = await response.json();
       return data;
     } else {
-      console.log(response);
+
     }
   } catch (error) {
     throw error;

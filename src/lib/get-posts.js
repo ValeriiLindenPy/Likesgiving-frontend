@@ -19,9 +19,9 @@ export const getPosts = async (postType, token, pageNumber, author = null) => {
             const data = await response.json();
             return data;
         } else {
-            console.log(response.status);
+
         }
     } catch (error) {
-        console.log(error);
+
     }
 };

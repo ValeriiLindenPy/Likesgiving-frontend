@@ -1,6 +1,6 @@
 "use client";
 
-import { useSession } from 'next-auth/react';
+import { useSession, signOut } from 'next-auth/react';
 import { useQuery } from '@tanstack/react-query';
 import Loader from '@/components/Loader';
 import { useDispatch, useSelector } from 'react-redux';
@@ -12,6 +12,7 @@ import { Post } from '@/components/Posts';
 import { useInfiniteQuery } from "@tanstack/react-query";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { getPosts } from '@/lib/get-posts';
+import { IoMdLogOut } from "react-icons/io";
 
 export default function Profile() {
     const { data: session } = useSession();
@@ -77,12 +78,16 @@ export default function Profile() {
         };
     }, [hasNextPage, fetchNextPage]);
 
-    console.log(likeStatus);
+
 
     return (
         <>
             <main className={likeStatus === 'Disliker' ? styles.blackbg : ''}>
                 <div className={styles.profileContainer}>
+                    <div className={styles.logOut}>
+                    <a onClick={signOut} > <IoMdLogOut size={35} /> </a>
+
+                    </div>
                     <div className={styles.profilePhotoContainer}>
                         <Image className={styles.profilePhoto} src={profileData?.profile_picture} width={180} height={150} alt='profile-photo' />
                     </div>

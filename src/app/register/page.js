@@ -35,7 +35,7 @@ export default function SignUp() {
           }),
         });
 
-        console.log(createUserResponse);
+
 
         if (createUserResponse.status === 201) {
           // User was successfully created, now proceed with signIn
@@ -64,7 +64,7 @@ export default function SignUp() {
 
           // Handle other errors or show a generic error message
         } else {
-          console.log(error);
+    
           // Handle non-response errors, e.g., network issues
         }
       }
@@ -123,7 +123,14 @@ export default function SignUp() {
           />
           {formik.errors.re_password && formik.touched.re_password && <p className={styles.errorlabel}>{formik.errors.re_password}</p>}
           <button disabled={formik.isSubmitting} type='submit'>Sign up</button>
+
+
         </form>
+
+        <div className={styles.backSignIn}>
+          <p>Back to <a href='/login'>Sign-in</a></p>
+
+        </div>
       </div>
     </main>
   )

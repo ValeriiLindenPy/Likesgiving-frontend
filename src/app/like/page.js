@@ -9,12 +9,15 @@ import Loader from "@/components/Loader";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { getPosts } from "@/lib/get-posts";
-
+import { FaUserAlt } from 'react-icons/fa';
+import Link from "next/link";
 
 
 export default function Like() {
   const [modal, setModal] = useState(false);
   const { data: session, status } = useSession();
+  const [isAtTop, setIsAtTop] = useState(true);
+
 
 
 
@@ -49,24 +52,31 @@ export default function Like() {
 
 
   useEffect(() => {
-    // Check if the user has scrolled to the bottom of the page
     const handleScroll = () => {
+      if (window.scrollY > 10) {
+        setIsAtTop(false);
+      } else {
+        setIsAtTop(true);
+      }
+  
       if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-        // If at the bottom and there is a next page, fetch it
         if (hasNextPage) {
           fetchNextPage();
         }
       }
     };
-
-    // Add the scroll event listener when the component mounts
+  
     window.addEventListener('scroll', handleScroll);
-
-    // Remove the scroll event listener when the component unmounts
+  
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, [hasNextPage, fetchNextPage]);
+  
+  useEffect(() => {
+
+  }, [isAtTop]);
+  
 
 
 
@@ -74,6 +84,10 @@ export default function Like() {
     <main>
       <div className="postHeader">
         <IoHeartOutline size={35} />
+        {isAtTop ? <Link style={{
+          color: 'black',
+          textDecoration: 'none'
+        }} href="/profile"><FaUserAlt className= "userIconMobile" size={30} /></Link>: <></>}
 
       </div>
       <div className="post-container">

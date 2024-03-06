@@ -141,7 +141,7 @@ export const Post = ({ post, type }) => {
             </div>
         );
     } catch (error) {
-        console.error("Error fetching posts:", error);
+  
         return <p>Error fetching posts</p>; // You can provide a fallback UI for the error case
     }
 };
