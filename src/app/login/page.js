@@ -22,12 +22,7 @@ export default function LogIn() {
           password: values.password,
           callbackUrl: 'https://thanksgiving-j6r1q1qck-valeriis-projects-0ac1b84e.vercel.app/'
         });
-
-        if (response.error) {
-          // Handle error if authentication fails
-
-        }
-
+        
         actions.resetForm();
       } catch (error) {
 

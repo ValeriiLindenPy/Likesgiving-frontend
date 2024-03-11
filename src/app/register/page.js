@@ -20,19 +20,21 @@ export default function SignUp() {
     },
     validationSchema: signUpSchema,
     onSubmit: async (values, actions) => {
+
       try {
+        const formData = new FormData();
+        formData.append('user_name', values.user_name);
+        formData.append('email', values.email);
+        formData.append('password', values.password);
+        formData.append('profile_picture', profilePicture);
+
         const createUserResponse = await fetch('https://ihl-project-606adf7a8500.herokuapp.com/auth/create/', {
           method: 'POST',
           cache: "force-cache",
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            user_name: values.user_name,
-            email: values.email,
-            password: values.password,
-            profile_picture: profilePicture,
-          }),
+          // headers: {
+          //   'Content-Type': 'application/json',
+          // },
+          body: formData,
         });
 
 

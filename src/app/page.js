@@ -3,7 +3,7 @@
 import { SBar } from "@/components/StatisticBar/SBar";
 import { useSession } from "next-auth/react";
 import useSWR from "swr";
-// import Loading from "./loading";
+
 
 export default function Home() {
   const { data: session } = useSession();
