@@ -20,7 +20,6 @@ export default function SignUp() {
     },
     validationSchema: signUpSchema,
     onSubmit: async (values, actions) => {
-
       try {
         const createUserResponse = await fetch('https://ihl-project-606adf7a8500.herokuapp.com/auth/create/', {
           method: 'POST',
@@ -32,7 +31,6 @@ export default function SignUp() {
             user_name: values.user_name,
             email: values.email,
             password: values.password,
-            profile_picture: profilePicture,
           }),
         });
 
