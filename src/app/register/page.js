@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { useFormik } from 'formik';
 import { signUpSchema } from '@/schemas';
 import { signIn } from 'next-auth/react';
-import profilePicture from '@/app/assets/profilepic.png';
+
 
 
 
@@ -26,14 +26,13 @@ export default function SignUp() {
         formData.append('user_name', values.user_name);
         formData.append('email', values.email);
         formData.append('password', values.password);
-        formData.append('profile_picture', profilePicture);
 
         const createUserResponse = await fetch('https://ihl-project-606adf7a8500.herokuapp.com/auth/create/', {
           method: 'POST',
           cache: "force-cache",
-          // headers: {
-          //   'Content-Type': 'application/json',
-          // },
+          headers: {
+            'Content-Type': 'application/json',
+          },
           body: formData,
         });
 
