@@ -13,7 +13,7 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { getPosts } from '@/lib/get-posts';
 import { IoMdLogOut } from "react-icons/io";
-import defaultProfilePic from '../app/assets/profilepic.png'
+import defaultProfilePic from '@/app/assets/profilepic.png'
 
 export default function Profile() {
     const { data: session } = useSession();

@@ -10,7 +10,7 @@ import { makeLike } from '@/lib/makeLike';
 import { BiComment } from "react-icons/bi";
 import { formatNumber } from '@/lib/numberFormate';
 import Link from 'next/link';
-import defaultProfilePic from '../app/assets/profilepic.png'
+import defaultProfilePic from '@/app/assets/profilepic.png'
 
 
 

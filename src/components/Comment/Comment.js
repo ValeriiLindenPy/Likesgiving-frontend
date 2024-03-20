@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { useInfiniteQuery } from "@tanstack/react-query";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { Fragment, useEffect } from 'react';
-import defaultProfilePic from '../app/assets/profilepic.png'
+import defaultProfilePic from '@/app/assets/profilepic.png'
 
 
 
