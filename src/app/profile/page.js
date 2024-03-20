@@ -93,7 +93,7 @@ export default function Profile() {
                         <Image className={styles.profilePhoto} src={profileData?.profile_picture ? profileData?.profile_picture : defaultProfilePic} width={180} height={150} alt='profile-photo' />
                     </div>
                     <div className={styles.profileName}>
-                        <h1>{data?.user_name}</h1>
+                        <h1>{profileData?.user_name}</h1>
                     </div>
                     <div className={styles.profileStat}>
                         <h2>{profileData?.statistics.like_posts} L : {profileData?.statistics.dislike_posts} D</h2>
