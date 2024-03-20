@@ -10,7 +10,7 @@ import { makeLike } from '@/lib/makeLike';
 import { BiComment } from "react-icons/bi";
 import { formatNumber } from '@/lib/numberFormate';
 import Link from 'next/link';
-
+import defaultProfilePic from '../app/assets/profilepic.png'
 
 
 
@@ -52,7 +52,7 @@ export const Post = ({ post, type }) => {
                 <div key={post.id} className={type === 'like' ? styles.postLike : styles.postDisike}>
                     <article>
                         <div className={styles.postLikeAuthor}>
-                            <Image className={styles.authorImg} src={post.author.profile_picture
+                            <Image className={styles.authorImg} src={post.author.profile_picture ? post.author.profile_picture : defaultProfilePic
                             } width={40} height={40} alt='author_profile_picture
                                 ' />
 

@@ -5,9 +5,8 @@ import styles from './Comment.module.css'
 import Image from 'next/image';
 import { useInfiniteQuery } from "@tanstack/react-query";
 import InfiniteScroll from "react-infinite-scroll-component";
-import Loader from '../Loader';
 import { Fragment, useEffect } from 'react';
-
+import defaultProfilePic from '../app/assets/profilepic.png'
 
 
 
@@ -104,7 +103,7 @@ export const CommentComponent = ({ token, idPost, type }) => {
                             <div key={comment?.id} className={styles.container}>
                                 <div className={styles.CommentBody}>
                                     <div className={styles.authorImgContainer}>
-                                        <Image className={styles.authorImg} src={comment.user?.profile_picture} width={40} height={40} alt='author_profile_picture' />
+                                        <Image className={styles.authorImg} src={comment.user?.profile_picture ? comment.user?.profile_picture : defaultProfilePic} width={40} height={40} alt='author_profile_picture' />
                                     </div>
                                     <div className={styles.CommentContent}>
                                         <div className={styles.authorName}>
