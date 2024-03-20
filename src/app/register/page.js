@@ -22,18 +22,18 @@ export default function SignUp() {
     onSubmit: async (values, actions) => {
 
       try {
-        const formData = new FormData();
-        formData.append('user_name', values.user_name);
-        formData.append('email', values.email);
-        formData.append('password', values.password);
-
         const createUserResponse = await fetch('https://ihl-project-606adf7a8500.herokuapp.com/auth/create/', {
           method: 'POST',
           cache: "force-cache",
           headers: {
             'Content-Type': 'application/json',
           },
-          body: formData,
+          body: JSON.stringify({
+            user_name: values.user_name,
+            email: values.email,
+            password: values.password,
+            profile_picture: profilePicture,
+          }),
         });
 
 
