@@ -41,6 +41,8 @@ export const AddProfilePic = ({ onClick }) => {
 
                 if (responseData.error) {
 
+                    console.log(responseData.error)
+
                 }
 
                 actions.resetForm();
