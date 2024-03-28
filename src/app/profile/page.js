@@ -14,12 +14,15 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { getPosts } from '@/lib/get-posts';
 import { IoMdLogOut } from "react-icons/io";
 import defaultProfilePic from '@/app/assets/profilepic.png'
+import { AddProfilePic } from "@/components/Modals/AddProfilePic";
+import { MdPhotoCamera } from "react-icons/md";
 
 export default function Profile() {
     const { data: session } = useSession();
     const likeStatus = useSelector((state) => state.auth.likeStatus);
     const dispatch = useDispatch();
     const [postType, setType] = useState('like');
+    const [modal, setModal] = useState(false);
 
     const config = {
         
@@ -79,6 +82,10 @@ export default function Profile() {
         };
     }, [hasNextPage, fetchNextPage]);
 
+    const changePhoto = () => {
+        setModal(!modal);
+      };
+
 
 
     return (
@@ -91,6 +98,7 @@ export default function Profile() {
                     </div>
                     <div className={styles.profilePhotoContainer}>
                         <Image className={styles.profilePhoto} src={profileData?.profile_picture ? profileData?.profile_picture : defaultProfilePic} width={180} height={150} alt='profile-photo' />
+                        <MdPhotoCamera className={styles.camera}  size={30} onClick={changePhoto} />
                     </div>
                     <div className={styles.profileName}>
                         <h1>{profileData?.user_name}</h1>
@@ -132,6 +140,8 @@ export default function Profile() {
                         )}
                     </div>
                 </div>
+
+                {modal && <AddProfilePic onClick={changePhoto} />}
             </main>
         </>
     );

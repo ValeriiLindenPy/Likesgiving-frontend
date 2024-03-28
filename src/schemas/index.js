@@ -35,6 +35,12 @@ const validFileExtensions = { image: ['jpg', 'png', 'jpeg', 'webp'] };
 function isValidFileType(fileName, fileType) {
     if (!fileName) return false;
     const fileExtension = fileName.split('.').pop().toLowerCase();
+    if (!validFileExtensions[fileType]) {
+        return "fileType is not found"; 
+    }
+    if (!fileExtension) {
+        return "fileExtension is not found"; 
+    }
     return validFileExtensions[fileType].indexOf(fileExtension) > -1;
 }
 
@@ -50,5 +56,18 @@ export const addPostSchema = yup.object().shape({
             // Validation for picture type and size
             return isValidFileType(value.name, ["jpg", "png", "jpeg", "webp"]) && value.size <= MAX_FILE_SIZE;
         }),
+});
+
+export const changePicSchema = yup.object().shape({
+
+    picture: yup.mixed()
+        .nullable()
+        .test("is-valid-picture", "Please upload a valid image (jpg, png, jpeg, webp) with a maximum size of 20Mb", (value) => {
+            if (!value) {
+                return true; // No picture provided, so no validation needed.
+            }
+            // Validation for picture type and size
+            return isValidFileType(value.name, ["jpg", "png", "jpeg", "webp"]) && value.size <= MAX_FILE_SIZE;
+        }).required('You need to choose your new look)'),
 });
 
