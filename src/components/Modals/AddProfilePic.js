@@ -24,7 +24,7 @@ export const AddProfilePic = ({ onClick }) => {
                 }
 
                 const response = await fetch('https://ihl-project-606adf7a8500.herokuapp.com/auth/edit-profile/', {
-                    method: 'POST',
+                    method: 'PUT',
                     cache: "force-cache",
                     headers: {
                         'Authorization': `Token ${session?.token}`,
