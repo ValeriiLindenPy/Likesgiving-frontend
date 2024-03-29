@@ -14,7 +14,9 @@ import defaultProfilePic from '@/app/assets/profilepic.png'
 
 
 
-export const Post = ({ post, type }) => {
+export const Post = ({ post, type, top = null }) => {
+
+    console.log(type);
 
 
     const { data: session } = useSession();
@@ -60,7 +62,7 @@ export const Post = ({ post, type }) => {
 
                         <div className={styles.postData}>
                             <div className={styles.authorName}>
-                                <p>{post.author.user_name}</p>
+                                <p>{post.author.user_name} {top = 'top' && ' (TOP POST)' }</p>
                             </div>
 
                             <div className={styles.emotion}>

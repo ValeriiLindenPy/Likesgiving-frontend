@@ -226,11 +226,12 @@ main {
 
 .homeBar {
 	display: flex;
-	flex-direction: column;
+	flex-direction: row ;
 	text-align: center;
-	margin-top: 150px;
-	width: 500px;
-	min-width: 400px;
+	
+	width: 1000px;
+	min-width: 1000px;
+	align-items: center;
 }
 
 
@@ -247,6 +248,16 @@ main {
 }
 
 @media (max-width: 820px) {
+
+	.homeMain {
+		height: 145vh;
+	}
+	.homeBar {
+		display: flex;
+		flex-direction: column;
+	}
+
+
 	.postHeader {
 		flex-direction: row;
 	}
