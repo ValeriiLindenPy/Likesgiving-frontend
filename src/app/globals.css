@@ -234,6 +234,10 @@ main {
 	align-items: center;
 }
 
+.topPost {
+	text-align: left;
+}
+
 
 .homeBar h1 {
 	font-size: 53px;
