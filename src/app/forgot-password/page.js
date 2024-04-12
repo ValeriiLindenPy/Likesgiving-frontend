@@ -38,7 +38,7 @@ export default function ForgotPassword() {
     validationSchema: paswwordForgot,
     onSubmit: async (values, actions) => {
       try {
-        // Trigger a re-fetch when the form is submitted
+      
         await mutate('https://ihl-project-606adf7a8500.herokuapp.com/auth/password_reset/', async () => {
           await fetcher('https://ihl-project-606adf7a8500.herokuapp.com/auth/password_reset/', values.email);
         });
@@ -47,7 +47,7 @@ export default function ForgotPassword() {
         actions.resetForm();
       } catch (error) {
         
-        // Handle error if any exception occurs during the try block
+ 
       }
     },
   });

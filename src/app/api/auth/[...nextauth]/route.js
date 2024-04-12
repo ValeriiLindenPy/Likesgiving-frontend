@@ -29,14 +29,14 @@ export const authOptions = {
 
           const user = await res.json();
 
-          // If no error and we have user data, return it
+       
           if (res.status === 200 && user && user.token && user.user) {
             return user;
           } else {
             throw new Error("Invalid response from authentication API");
           }
         } catch (error) {
-          // Handle error here
+      
           return { error: "Invalid credentials" };
         }
       },
@@ -55,7 +55,7 @@ export const authOptions = {
       );
     },
     async jwt({ user, token, account }) {
-      // If `user` and `account` are set that means it is a login event
+  
       if (user && account) {
         let backendResponse = account.provider === "credentials" ? user : account.meta;
 
@@ -92,11 +92,3 @@ const handler = NextAuth(authOptions);
 
 export { handler as GET, handler as POST };
 
-// export async function generateStaticParams() {
-//   const staticParams = [
-//     {
-//       nextauth: ["31"],
-//     },
-//   ];
-//   return staticParams;
-// }

@@ -54,7 +54,7 @@ export const Post = ({ post, type, top = 'regular' }) => {
                 <div key={post.id} className={type === 'like' ? styles.postLike : styles.postDisike}>
                     <article>
                         <div className={styles.postLikeAuthor}>
-                            <Image className={styles.authorImg} src={post.author.profile_picture ? post.author.profile_picture : defaultProfilePic
+                            <Image className={styles.authorImg} src={post.author?.profile_picture ? post.author?.profile_picture : defaultProfilePic
                             } width={40} height={40} alt='author_profile_picture
                                 ' />
 
@@ -144,6 +144,6 @@ export const Post = ({ post, type, top = 'regular' }) => {
         );
     } catch (error) {
   
-        return <p>Error fetching posts</p>; // You can provide a fallback UI for the error case
+        return <p>Error fetching posts</p>; 
     }
 };

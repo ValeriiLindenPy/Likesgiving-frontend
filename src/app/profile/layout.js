@@ -4,7 +4,7 @@ import { ReduxProvider } from "@/redux/ReduxProvider";
 
 
 export default function ProfileLayout({
-    children, // will be a page or nested layout
+    children, 
 }) {
     return (
         <>

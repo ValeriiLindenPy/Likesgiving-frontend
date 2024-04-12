@@ -32,12 +32,12 @@ export default function Like() {
     {
       getNextPageParam: (lastPage, allPages) => {
 
-        // Check if there is a next page available
+ 
         if (lastPage?.next) {
           return allPages.length + 1;
         }
 
-        // If there is no next page, return undefined
+        
         return undefined;
       },
     }

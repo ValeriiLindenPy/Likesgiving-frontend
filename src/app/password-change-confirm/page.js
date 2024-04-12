@@ -47,7 +47,7 @@ export default function ChangePasswordConfirm() {
         actions.resetForm();
 
       } catch (error) {
-        // Handle error if any exception occurs during the try block
+ 
         console.log(error);
 
       }
